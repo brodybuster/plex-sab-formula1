@@ -9,6 +9,9 @@
 # 3 : Requires : re: FP1|FP2|FP3|Sprint|Qualifying|Race
 # 4 : *
 
+# Set to SKY or F1TV
+preferred_feed="F1TV"
+
 # Set destination dir -> plex dir for formula 1
 dest_dir="/media/pool.media/formula1"
 
@@ -25,25 +28,25 @@ new_filename="${job_name}.${extension}"
 
 # array of episodes names we are interested in, along with eposide number to assign
 declare -A type_episode_arry
-type_episode_arry["\.FP1"]="01"
-type_episode_arry["\.Sprint.Qualifying"]="02"
-type_episode_arry["\.Pre-Sprint.Show"]="03"
-type_episode_arry["\.Sprint"]="04"
-type_episode_arry["\.Post-Sprint.Show"]="05"
-type_episode_arry["\.FP2"]="06"
-type_episode_arry["\.FP3"]="07"
-type_episode_arry["\.Pre-Qualifying.Show"]="08"
-type_episode_arry["\.Qualifying"]="09"
-type_episode_arry["\.Post-Qualifying.Show"]="10"
-type_episode_arry["\.Pre-Race.Show"]="11"
-type_episode_arry["\.Race"]="12"
-type_episode_arry["\.Post-Race.Show"]="13"
-type_episode_arry["\.Post-Race.Press.Conference"]="14"
+type_episode_arry["FP1"]="01"
+type_episode_arry["Sprint.Qualifying"]="02"
+type_episode_arry["Pre-Sprint.Show"]="03"
+type_episode_arry["Sprint"]="04"
+type_episode_arry["Post-Sprint.Show"]="05"
+type_episode_arry["FP2"]="06"
+type_episode_arry["FP3"]="07"
+type_episode_arry["Pre-Qualifying.Show"]="08"
+type_episode_arry["Qualifying"]="09"
+type_episode_arry["Post-Qualifying.Show"]="10"
+type_episode_arry["Pre-Race.Show"]="11"
+type_episode_arry["Race"]="12"
+type_episode_arry["Post-Race.Show"]="13"
+type_episode_arry["Post-Race.Press.Conference"]="14"
 
 # check to see if filename cotains any of the episodes we are interested in
 found=0
 for key in "${!type_episode_arry[@]}"; do
-  if [ -n "$(echo "${new_filename}" | grep -Eio ${key})" ]; then
+  if [ -n "$(echo "${new_filename}" | grep -Eio "\.${key}")" ]; then
     found=1
     break
  fi
@@ -75,27 +78,28 @@ mkdir -p "${plex_dir}"
 # if feed is SKY and we already downloaded something, abort and delete it 
 network=$(echo "${new_filename}" | sed -n "s/.*${key}.//Ip" | sed 's/.WEB.*//')
 
-if [[ -n "$(echo "${network}" | grep -Eio "SKY")" ]]; then
+if [[ -n "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
+  echo "File is Preferred Network (${preferred_feed})."
+  echo "Copied"  
+  mv "${sab_file}" "${plex_dir}/${plex_filename}"
+  echo "Copying poster to ${plex_dir}/${plex_poster}"
+  cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
+fi
+
+if [[ -z "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
   if [ ! -f "${plex_dir}/${plex_filename}" ]; then
-    echo "Feed is SKY and file does not exist ... copying"
+    echo "File is not Preferred Feed (${preferred_feed}) and file does not exist."
+    echo "Copied"
     mv "${sab_file}" "${plex_dir}/${plex_filename}"
     echo "Copying poster to ${plex_dir}/${plex_poster}"
     cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
   fi
   if [ -f "${plex_dir}/${plex_filename}" ]; then
-    echo "Feed is SKY and file already exists ... aborting"
+    echo "File is not Preferred Feed (${preferred_feed}) and file already exists."
     echo "Skipped"
     rm -rf "${src_dir}"
     exit 0    
   fi 
-fi
-
-# if feed is F1TV keep it, regardless if we already downloaded something. This is the preferred feed. 
-if [[ -n "$(echo "${network}" | grep -Eio "F1TV")" ]]; then
-  echo "Feed is F1LIVE ... copying"  
-  mv "${sab_file}" "${plex_dir}/${plex_filename}"
-  echo "Copying poster to ${plex_dir}/${plex_poster}"
-  cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
 fi
 
 echo "Cleaning up sabnzbd files"
@@ -106,3 +110,4 @@ chmod 774 "${plex_dir}/${plex_filename}"
 
 echo "Done"
 exit 0
+
