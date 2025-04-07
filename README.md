@@ -12,13 +12,13 @@ I will assume that you have your media server and sabnzbd running correctly. Thi
   b. Grab the RSS feed link
 
 2. Prepare sabnzbd 
-   a. Create a new RSS feed
-   b. use the following filters. This will filter all releases from MWR (which I prefer)
-     0 : Requires : MWR
-     1 : Reject : re: proper|notebook|multi|round00
-     2 : Requires : re: F1TV|SKY
-     3 : Requires : re: FP1|FP2|FP3|Sprint|Qualifying|Race
-     4 : *
+a. Create a new RSS feed
+b. use the following filters. This will filter all releases from MWR (which I prefer)
+0 : Requires : MWR
+1 : Reject : re: proper|notebook|multi|round00
+2 : Requires : re: F1TV|SKY
+3 : Requires : re: FP1|FP2|FP3|Sprint|Qualifying|Race
+4 : *
 
    
 
