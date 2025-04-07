@@ -1,4 +1,5 @@
 #!/bin/bash
+# Thanks to https://gist.github.com/scottrobertson for some debugging help
 
 # NZB RSS Feed Keywords: formula1 2025
 
@@ -80,21 +81,18 @@ network=$(echo "${new_filename}" | sed -n "s/.*${key}.//Ip" | sed 's/.WEB.*//')
 
 if [[ -n "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
   echo "File is Preferred Network (${preferred_feed})."
-  echo "Copied"  
   mv "${sab_file}" "${plex_dir}/${plex_filename}"
+  echo "Copied"  
   echo "Copying poster to ${plex_dir}/${plex_poster}"
   cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
-fi
-
-if [[ -z "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
+elif [[ -z "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
   if [ ! -f "${plex_dir}/${plex_filename}" ]; then
     echo "File is not Preferred Feed (${preferred_feed}) and file does not exist."
-    echo "Copied"
     mv "${sab_file}" "${plex_dir}/${plex_filename}"
+    echo "Copied"
     echo "Copying poster to ${plex_dir}/${plex_poster}"
     cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
-  fi
-  if [ -f "${plex_dir}/${plex_filename}" ]; then
+  else [ -f "${plex_dir}/${plex_filename}" ]; then
     echo "File is not Preferred Feed (${preferred_feed}) and file already exists."
     echo "Skipped"
     rm -rf "${src_dir}"
