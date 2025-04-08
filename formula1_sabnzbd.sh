@@ -75,8 +75,9 @@ plex_poster="${plex_name}.png"
 mkdir -p "${plex_dir}"
 
 # check to see what network feed the file is. 
-# if feed is SKY and we haven't downloaded F1TV feed yet, then let's keep it.
-# if feed is SKY and we already downloaded something, abort and delete it 
+# if feed is preferred feed we keep it, even if it's been downloaded before.
+# if feed is NOT preferred feed, then we only keep it if we don't already have a downloaded file
+# the non preferred file will get overwritten if a preferred feed one is available
 network=$(echo "${new_filename}" | sed -n "s/.*${key}.//Ip" | sed 's/.WEB.*//')
 
 if [[ -n "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
@@ -85,14 +86,14 @@ if [[ -n "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
   echo "Copied"  
   echo "Copying poster to ${plex_dir}/${plex_poster}"
   cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
-elif [[ -z "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
+else
   if [ ! -f "${plex_dir}/${plex_filename}" ]; then
     echo "File is not Preferred Feed (${preferred_feed}) and file does not exist."
     mv "${sab_file}" "${plex_dir}/${plex_filename}"
     echo "Copied"
     echo "Copying poster to ${plex_dir}/${plex_poster}"
     cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
-  elif [ -f "${plex_dir}/${plex_filename}" ]; then
+  else
     echo "File is not Preferred Feed (${preferred_feed}) and file already exists."
     echo "Skipped"
     rm -rf "${src_dir}"
@@ -108,4 +109,3 @@ chmod 774 "${plex_dir}/${plex_filename}"
 
 echo "Done"
 exit 0
-
