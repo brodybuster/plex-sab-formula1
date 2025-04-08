@@ -92,7 +92,7 @@ elif [[ -z "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
     echo "Copied"
     echo "Copying poster to ${plex_dir}/${plex_poster}"
     cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
-  else [ -f "${plex_dir}/${plex_filename}" ]; then
+  elif [ -f "${plex_dir}/${plex_filename}" ]; then
     echo "File is not Preferred Feed (${preferred_feed}) and file already exists."
     echo "Skipped"
     rm -rf "${src_dir}"
