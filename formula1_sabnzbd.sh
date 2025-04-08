@@ -11,106 +11,106 @@
 # 4 : *
 
 # set to SKY or F1TV
-preferred_feed="F1TV"
+PREFERRED_FEED="F1TV"
 
-# set destination dir where to place processed files. 
-# should be in your plex media libray path 
+# set destination dir where to place processed files.
+# should be in your plex media libray path
 # must be accessible from sabnzbd container if you are running sabnzbd in docker
-dest_dir="/media/pool.media/formula1"
+DEST_DIR="/media/pool.media/formula1"
 
-# poster dir where templates for episode poster reside. 
+# poster dir where templates for episode poster reside.
 # must be accessible from sabnzbd container if you are running sabnzbd in docker
-poster_dir="/config/scripts/formula_posters"
+POSTER_DIR="/config/scripts/formula_posters"
 
 # set some basic variables we need from sabnzbd
-src_dir="$1"
-job_name="$3"
-sab_file=$(find "$src_dir" -type f | sort -n | tail -1)
-extension="${sab_file##*.}"
-new_filename="${job_name}.${extension}"
+SRC_DIR="$1"
+JOB_NAME="$3"
+SAB_FILE=$(find "$SRC_DIR" -type f | sort -n | tail -1)
+EXTENSION="${SAB_FILE##*.}"
+NEW_FILENAME="${JOB_NAME}.${EXTENSION}"
 
 # array of episodes names we are interested in, along with correct eposide number to assign
-declare -A episode_array
-episode_array["FP1"]="01"
-episode_array["Sprint.Qualifying"]="02"
-episode_array["Pre-Sprint.Show"]="03"
-episode_array["Sprint"]="04"
-episode_array["Post-Sprint.Show"]="05"
-episode_array["FP2"]="06"
-episode_array["FP3"]="07"
-episode_array["Pre-Qualifying.Show"]="08"
-episode_array["Qualifying"]="09"
-episode_array["Post-Qualifying.Show"]="10"
-episode_array["Pre-Race.Show"]="11"
-episode_array["Race"]="12"
-episode_array["Post-Race.Show"]="13"
-episode_array["Post-Race.Press.Conference"]="14"
+declare -A EPISODE_ARRAY
+EPISODE_ARRAY["FP1"]="01"
+EPISODE_ARRAY["Sprint.Qualifying"]="02"
+EPISODE_ARRAY["Pre-Sprint.Show"]="03"
+EPISODE_ARRAY["Sprint"]="04"
+EPISODE_ARRAY["Post-Sprint.Show"]="05"
+EPISODE_ARRAY["FP2"]="06"
+EPISODE_ARRAY["FP3"]="07"
+EPISODE_ARRAY["Pre-Qualifying.Show"]="08"
+EPISODE_ARRAY["Qualifying"]="09"
+EPISODE_ARRAY["Post-Qualifying.Show"]="10"
+EPISODE_ARRAY["Pre-Race.Show"]="11"
+EPISODE_ARRAY["Race"]="12"
+EPISODE_ARRAY["Post-Race.Show"]="13"
+EPISODE_ARRAY["Post-Race.Press.Conference"]="14"
 
 # check to see if filename contains any of the episodes we are interested in
-found=0
-for key in "${!episode_array[@]}"; do
-  if [ -n "$(echo "${new_filename}" | grep -Eio "\.${key}")" ]; then
-    found=1
+FOUND=0
+for KEY in "${!EPISODE_ARRAY[@]}"; do
+  if echo "${NEW_FILENAME}" | grep -qEio "\.${KEY}"; then
+    FOUND=1
     break
  fi
 done
 
 # if filename does not contain wanted episode name, then stop and delete files
-if [[ $found -eq 0 ]]; then
+if [[ $FOUND -eq 0 ]]; then
   echo "Filename does not contain wanted episode criteria ... aborting"
-  rm -rf "${src_dir}"
+  rm -rf "${SRC_DIR}"
   exit 1
 fi
 
 # extract info we need to rename for plex
-year=$(echo "${new_filename}" | cut -d. -f2)
-season=$(echo "${new_filename}" | cut -d. -f3 | sed 's/Round//')
-episode="${episode_array["${key}"]}"
-location=$(echo "${new_filename}" | cut -d. -f4)
+YEAR=$(echo "${NEW_FILENAME}" | cut -d. -f2)
+SEASON=$(echo "${NEW_FILENAME}" | cut -d. -f3 | sed 's/Round//')
+EPISODE="${EPISODE_ARRAY["${KEY}"]}"
+LOCATION=$(echo "${NEW_FILENAME}" | cut -d. -f4)
 
 # define new directory and filename for plex
-plex_dir="${dest_dir}/F1 ${year}/Season ${season}"
-plex_name="S${season}E${episode} - ${location} Grand Prix - ${key}"
-plex_filename="${plex_name}.${extension}"
-plex_poster="${plex_name}.png"
+PLEX_DIR="${DEST_DIR}/F1 ${YEAR}/Season ${SEASON}"
+PLEX_NAME="S${SEASON}E${EPISODE} - ${LOCATION} Grand Prix - ${KEY}"
+PLEX_FILENAME="${PLEX_NAME}.${EXTENSION}"
+PLEX_POSTER="${PLEX_NAME}.png"
 
 # create needed directories
-mkdir -p "${plex_dir}"
+mkdir -p "${PLEX_DIR}"
 
-# check to see what network feed the file is. 
+# check to see what network feed the file is.
 # if feed is preferred feed we keep it, even if it's been downloaded before.
 # if feed is NOT preferred feed, then we only keep it if we don't already have a downloaded file
 # the non preferred file will get overwritten if a preferred feed one becomes available
-network=$(echo "${new_filename}" | sed -n "s/.*${key}.//Ip" | sed 's/.WEB.*//')
+NETWORK=$(echo "${NEW_FILENAME}" | sed -n "s/.*${KEY}.//Ip" | sed 's/.WEB.*//')
 
-if [[ -n "$(echo "${network}" | grep -Eio "${preferred_feed}")" ]]; then
-  echo "File is Preferred Network (${preferred_feed})."
-  mv "${sab_file}" "${plex_dir}/${plex_filename}"
+if echo "${NETWORK}" | grep -qEio "${PREFERRED_FEED}"; then
+  echo "File is Preferred Network (${PREFERRED_FEED})."
+  mv "${SAB_FILE}" "${PLEX_DIR}/${PLEX_FILENAME}"
   echo "Copied"  
-  echo "Copying poster to ${plex_dir}/${plex_poster}"
-  cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
+  echo "Copying poster to ${PLEX_DIR}/${PLEX_POSTER}"
+  cp "${POSTER_DIR}/${EPISODE}.png" "${PLEX_DIR}/${PLEX_POSTER}"
 else
-  if [ ! -f "${plex_dir}/${plex_filename}" ]; then
-    echo "File is not Preferred Feed (${preferred_feed}) and file does not exist."
-    mv "${sab_file}" "${plex_dir}/${plex_filename}"
+  if [ ! -f "${PLEX_DIR}/${PLEX_FILENAME}" ]; then
+    echo "File is not Preferred Feed (${PREFERRED_FEED}) and file does not exist."
+    mv "${SAB_FILE}" "${PLEX_DIR}/${PLEX_FILENAME}"
     echo "Copied"
-    echo "Copying poster to ${plex_dir}/${plex_poster}"
-    cp "${poster_dir}/${episode}.png" "${plex_dir}/${plex_poster}"
+    echo "Copying poster to ${PLEX_DIR}/${PLEX_POSTER}"
+    cp "${POSTER_DIR}/${EPISODE}.png" "${PLEX_DIR}/${PLEX_POSTER}"
   else
-    echo "File is not Preferred Feed (${preferred_feed}) and file already exists."
+    echo "File is not Preferred Feed (${PREFERRED_FEED}) and file already exists."
     echo "Skipped"
-    rm -rf "${src_dir}"
-    exit 0    
-  fi 
+    rm -rf "${SRC_DIR}"
+    exit 0
+  fi
 fi
 
 # remove sabnzbd files that are left over
 echo "Cleaning up sabnzbd files"
-rm -rf "${src_dir}"
+rm -rf "${SRC_DIR}"
 
-# set user friendly permissions 
-echo "Setting permissions for ${plex_dir}/${plex_filename}"
-chmod 774 "${plex_dir}/${plex_filename}"
+# set user friendly permissions
+echo "Setting permissions for ${PLEX_DIR}/${PLEX_FILENAME}"
+chmod 774 "${PLEX_DIR}/${PLEX_FILENAME}"
 
 echo "Done"
 exit 0
