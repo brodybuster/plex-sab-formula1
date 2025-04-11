@@ -10,8 +10,8 @@
 # 3 : Requires : re: FP1|FP2|FP3|Sprint|Qualifying|Race
 # 4 : *
 
-# set to SKY or F1TV
-PREFERRED_FEED="F1TV"
+# set to SKY or F1LIVE
+PREFERRED_FEED="F1LIVE"
 
 # set destination dir where to place processed files.
 # should be in your plex media libray path
