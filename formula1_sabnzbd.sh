@@ -1,4 +1,7 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
 # Thanks to https://gist.github.com/scottrobertson for some debugging help
 
 # NZB RSS Feed Keywords: formula1 2025
@@ -57,9 +60,10 @@ done
 
 # if filename does not contain wanted episode name, then stop and delete files
 if [[ $FOUND -eq 0 ]]; then
-  echo "Filename does not contain wanted episode criteria ... aborting"
+  echo "Filename does not contain wanted episode criteria"
+  echo "Aborted"
   rm -rf "${SRC_DIR}"
-  exit 1
+  exit 0
 fi
 
 # extract info we need to rename for plex
@@ -83,19 +87,17 @@ mkdir -p "${PLEX_DIR}"
 # the non preferred file will get overwritten if a preferred feed one becomes available
 NETWORK=$(echo "${NEW_FILENAME}" | sed -n "s/.*${KEY}.//Ip" | sed 's/.WEB.*//')
 
+FILE_MOVED=0
+
 if echo "${NETWORK}" | grep -qEio "${PREFERRED_FEED}"; then
   echo "File is Preferred Network (${PREFERRED_FEED})."
   mv "${SAB_FILE}" "${PLEX_DIR}/${PLEX_FILENAME}"
-  echo "Copied"  
-  echo "Copying poster to ${PLEX_DIR}/${PLEX_POSTER}"
-  cp "${POSTER_DIR}/${EPISODE}.png" "${PLEX_DIR}/${PLEX_POSTER}"
+  FILE_MOVED=1
 else
   if [ ! -f "${PLEX_DIR}/${PLEX_FILENAME}" ]; then
     echo "File is not Preferred Feed (${PREFERRED_FEED}) and file does not exist."
     mv "${SAB_FILE}" "${PLEX_DIR}/${PLEX_FILENAME}"
-    echo "Copied"
-    echo "Copying poster to ${PLEX_DIR}/${PLEX_POSTER}"
-    cp "${POSTER_DIR}/${EPISODE}.png" "${PLEX_DIR}/${PLEX_POSTER}"
+    FILE_MOVED=1
   else
     echo "File is not Preferred Feed (${PREFERRED_FEED}) and file already exists."
     echo "Skipped"
@@ -112,5 +114,18 @@ rm -rf "${SRC_DIR}"
 echo "Setting permissions for ${PLEX_DIR}/${PLEX_FILENAME}"
 chmod 774 "${PLEX_DIR}/${PLEX_FILENAME}"
 
+# Poster copy (run last, non-fatal)
+{
+  POSTER_SOURCE="${POSTER_DIR}/${EPISODE}.png"
+  if [[ -f "${POSTER_SOURCE}" ]]; then
+    echo "Copying poster to ${PLEX_DIR}/${PLEX_POSTER}"
+    cp "${POSTER_SOURCE}" "${PLEX_DIR}/${PLEX_POSTER}"
+  else
+    echo "Warning: Poster not found for ${EPISODE} (${POSTER_SOURCE})"
+  fi
+} || {
+  echo "Poster copy step failed (ignored)."
+}
 echo "Done"
+
 exit 0
