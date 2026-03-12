@@ -23,7 +23,8 @@ DEST_DIR="/media/pool.media/formula1"
 
 # poster dir where templates for episode poster reside.
 # must be accessible from sabnzbd container if you are running sabnzbd in docker
-POSTER_DIR="/config/scripts/formula_posters"
+POSTER_EPISODE="/config/scripts/formula_posters/episode"
+POSTER_SEASON="/config/scripts/formula_posters/season"
 
 # set some basic variables we need from sabnzbd
 SRC_DIR="$1"
@@ -112,20 +113,34 @@ rm -rf "${SRC_DIR}"
 
 # set user friendly permissions
 echo "Setting permissions for ${PLEX_DIR}/${PLEX_FILENAME}"
-chmod 774 "${PLEX_DIR}/${PLEX_FILENAME}"
+chmod 755 "${PLEX_DIR}/${PLEX_FILENAME}"
 
-# Poster copy (run last, non-fatal)
+# episode poster copy 
 {
-  POSTER_SOURCE="${POSTER_DIR}/${EPISODE}.png"
-  if [[ -f "${POSTER_SOURCE}" ]]; then
-    echo "Copying poster to ${PLEX_DIR}/${PLEX_POSTER}"
-    cp "${POSTER_SOURCE}" "${PLEX_DIR}/${PLEX_POSTER}"
+  EPISODE_POSTER_SOURCE="${POSTER_EPISODE}/${EPISODE}.png"
+  EPISODE_POSTER_DEST="${PLEX_DIR}/${PLEX_POSTER}"
+  if [[ -f "${EPISODE_POSTER_SOURCE}" ]]; then
+    echo "Copying episode poster to ${EPISODE_POSTER_DEST}"
+    cp "${EPISODE_POSTER_SOURCE}" "${EPISODE_POSTER_DEST}"
   else
-    echo "Warning: Poster not found for ${EPISODE} (${POSTER_SOURCE})"
+    echo "Warning: Episode poster not found for ${EPISODE} (${EPISODE_POSTER_SOURCE})"
   fi
 } || {
-  echo "Poster copy step failed (ignored)."
+  echo "Episode poster copy step failed (ignored)."
 }
-echo "Done"
 
-exit 0
+# season poster copy 
+{
+  SEASON_POSTER_SOURCE="${POSTER_SEASON}/${SEASON}.png"
+  SEASON_POSTER_DEST="${PLEX_DIR}/season${SEASON}.png"
+  if [[ -f "${SEASON_POSTER_SOURCE}" ]]; then
+    echo "Copying season poster to ${SEASON_POSTER_DEST}"
+    cp "${SEASON_POSTER_SOURCE}" "${SEASON_POSTER_DEST}"
+  else
+    echo "Warning: Season poster not found for ${SEASON} (${SEASON_POSTER_SOURCE})"
+  fi
+} || {
+  echo "Season poster copy step failed (ignored)."
+}
+
+echo "Done"
