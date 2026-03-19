@@ -1,14 +1,16 @@
-# 1. Create a Custom RSS feed in your NZB Indexer Provider
+## 1. Create a Custom RSS feed in your NZB Indexer Provider
 * I use the following key words: formula1 2025
 
-# 2. SABnzbd
-* Place the **formula_sabnzbd.sh** script into the script directory defined in your sabnzbd config. Make sure its executable.
-* Download the **formula_posters** dir and place it where sabnzbd can access them. To keep it simple, place it in the same directory you placed the **formula_sabnzbd.sh** script. Make sure this path is accessible by your sabnzbd container if you are using docker. 
-* Edit the directories in the script to suit your needs, both the **dest_dir** and the **poster_dir** need to be accessible by your docker container if you are using docker. Also ensure that sabnzbd has permission to access/write to these directories.
-* The code is pretty well commented, feel free to make any changes to your liking. It's setup to prefer F1LIVE coverage over SKY coverage, but to download SKY coverage until F1LIVE is available. 
-* Copy and Paste the link for the Custom RSS Feed from your Indexer into a new Feed in Sabnzbd
+## 2. SABnzbd
 
-<img width="1133" alt="Screenshot 2025-04-07 at 2 19 55 PM" src="https://github.com/user-attachments/assets/04891138-0bb7-435c-bfe4-d90e63e393a9" />
+- Place the `formula1_sabnzbd.sh` script into the script directory defined in your SABnzbd configuration. Make sure it is executable.
+- Download the `formula_posters` directory and place it somewhere SABnzbd can access it. To keep things simple, place it in the same directory as `formula1_sabnzbd.sh`.
+- If you are using Docker, make sure both the script path and the poster path are accessible from inside the SABnzbd container.
+- Edit the paths in the script to match your environment. Both `DEST_DIR` and the poster directories must be writable and accessible by SABnzbd.
+- The script is designed to prefer `F1LIVE` coverage over `SKY`, while still allowing `SKY` releases to be downloaded until a preferred release becomes available.
+- Copy and paste the custom RSS feed URL from your indexer into a new RSS feed in SABnzbd.
+
+<img width="500" alt="Screenshot 2025-04-07 at 2 19 55 PM" src="https://github.com/user-attachments/assets/04891138-0bb7-435c-bfe4-d90e63e393a9" />
 
 Add the following filters and choose the formula_sabnzbd.sh script for post-processing for your new RSS Feed:
 * 0 : Requires : MWR
@@ -17,52 +19,156 @@ Add the following filters and choose the formula_sabnzbd.sh script for post-proc
 * 3 : Requires : re: FP1|FP2|FP3|Sprint|Qualifying|Race
 * 4 : *
 
-<img width="1127" alt="Screenshot 2025-04-07 at 1 47 08 PM" src="https://github.com/user-attachments/assets/2f3e2028-3727-40a1-a7cd-dddeacbd2b9b" />
+<img width="500" alt="Screenshot 2025-04-07 at 1 47 08 PM" src="https://github.com/user-attachments/assets/2f3e2028-3727-40a1-a7cd-dddeacbd2b9b" />
 
 * Press **Read Feed**, then **Apply Filters**
 * Note: On the first loading of the feed you will need to Force Download any files that qualify. Subsequent RSS Feeds will be automatically refreshed every hour. 
 
-<img width="1131" alt="Screenshot 2025-04-07 at 2 37 50 PM" src="https://github.com/user-attachments/assets/2fa57522-f7d2-4eca-a40d-00ea9322242c" />
+<img width="500" alt="Screenshot 2025-04-07 at 2 37 50 PM" src="https://github.com/user-attachments/assets/2fa57522-f7d2-4eca-a40d-00ea9322242c" />
 
-# 2. Set your agent for Plex Media Shows to use local assets
-<img width="1039" alt="Screenshot 2025-04-07 at 1 51 02 PM" src="https://github.com/user-attachments/assets/07fc730e-6d56-4e23-9a98-4df9623a2019" />
+## 3. Set your agent for Plex Media Shows to use local assets
+<img width="500" alt="Screenshot 2025-04-07 at 1 51 02 PM" src="https://github.com/user-attachments/assets/07fc730e-6d56-4e23-9a98-4df9623a2019" />
 
-# 3. Create a new library for your Formula 1 Show
-<img width="731" alt="Screenshot 2025-04-07 at 1 48 43 PM" src="https://github.com/user-attachments/assets/42296cae-ee32-4077-8497-572fca15b7db" />
-<img width="729" alt="Screenshot 2025-04-07 at 1 48 54 PM" src="https://github.com/user-attachments/assets/71a7e9d6-8346-47dd-b2e0-e2a9f4721dca" />
-<img width="729" alt="Screenshot 2025-04-07 at 1 49 02 PM" src="https://github.com/user-attachments/assets/75f00ee0-7ec5-4ea4-b3a2-05ac38916c21" />
-<img width="731" alt="Screenshot 2025-04-07 at 1 49 15 PM" src="https://github.com/user-attachments/assets/34530ed6-aee1-4531-ae61-cd3e8c4df2a6" />
-<img width="731" alt="Screenshot 2025-04-07 at 1 49 23 PM" src="https://github.com/user-attachments/assets/8b0873b7-a099-4a03-a0be-9cab98ebffab" />
+## 4. Folder Structure
 
-# 4. You can now manually set posters for fanart, seasons, etc to your liking in plex once the directories start poplulating. Episode posters are loaded as local assets to the Season folder via the script. 
-* I personally create season01.png, season02.png, etc image files that corrospond to each Grand Prix. So for Australia, I created a custom season01.png and placed it into the Season 01 Folder (per plex naming conventions)
-* Each Formula Season (2024, 2025, etc), will be one Show in Plex, in your Formula Library
-* Each Round of a Season (Round 01, Round 02, etc) will be one Season in the Show.
-* All folders are created automatically, except to top level libray folder for plex.
+The script expects a base Formula 1 library folder to already exist. From there, it will automatically create the year and season folders it needs as new content is processed.
+
+### Required Base Folder
+
+You must create the main Formula 1 library folder manually.
+
+Example:
+`/media/pool.media/formula1`
+
+This should match the `DEST_DIR` value defined in the script.
+
+### Automatically Created by the Script
+
+Once the base folder exists, the script will automatically create:
+
+- year folders such as `F1 2025`
+- season folders such as `Season 01`
+- renamed media files such as `S01E01 - Australia Grand Prix - FP1.mkv`
+- episode poster files such as `S01E01 - Australia Grand Prix - FP1.png`
+- season poster files such as `season01.png`
+
+### Example Structure
+
+- `formula1` `(must be created manually)`
+  - `F1 2025` `(created automatically by the script)`
+    - `Season 01` `(created automatically by the script)`
+      - `season01.png` `(copied by the script if a matching season poster exists)`
+      - `S01E01 - Australia Grand Prix - FP1.mkv` `(created automatically by the script)`
+      - `S01E01 - Australia Grand Prix - FP1.png` `(copied by the script if a matching episode poster exists)`
+      - `S01E02 - Australia Grand Prix - FP2.mkv` `(created automatically by the script)`
+      - `S01E02 - Australia Grand Prix - FP2.png` `(copied by the script if a matching episode poster exists)`
+    - `Season 02` `(created automatically by the script)`
+
+### What Must Be Created Manually
+
+You must create:
+
+- the base Formula 1 library folder defined by `DEST_DIR`
+- the source poster folders if you want automatic poster support:
+  `formula_posters/episode/`
+  `formula_posters/season/`
+- the source poster image files stored inside those folders
+
+### What the Script Handles Automatically
+
+The script will:
+
+- create year folders such as `F1 2025`
+- create season folders such as `Season 01`
+- move and rename the processed video file into the correct Plex folder
+- copy a matching episode poster into the season folder if one exists
+- copy a matching season poster into the season folder if one exists
+
+### Important Note
+
+The script does not generate poster artwork.
+
+It only copies poster files that already exist in the configured poster directories. If no matching poster file is found, the media file will still be imported normally.
 
 
- - formula1 **(needs to be created)**
-   - F1 2025 (automatically created by script)
-     - Season 01 (automatically created by script)
-       - season01.png **(manual creation)**
-       - S01E01 - Australia Grand Prix - FP1.mkv (automatically created by script)
-       - S01E01 - Australia Grand Prix - FP1.png (automatically created by script)
-       - S01E02 - Australia Grand Prix - FP2.mkv (automatically created by script)
-       - S01E02 - Australia Grand Prix - FP2.png (automatically created by script)
-     - Season 02 (automatically created)
+## 5. Create a new library for your Formula 1 Show
+<img width="500" alt="Screenshot 2025-04-07 at 1 48 43 PM" src="https://github.com/user-attachments/assets/42296cae-ee32-4077-8497-572fca15b7db" />
+<img width="500" alt="Screenshot 2025-04-07 at 1 48 54 PM" src="https://github.com/user-attachments/assets/71a7e9d6-8346-47dd-b2e0-e2a9f4721dca" />
+<img width="500" alt="Screenshot 2025-04-07 at 1 49 02 PM" src="https://github.com/user-attachments/assets/75f00ee0-7ec5-4ea4-b3a2-05ac38916c21" />
+<img width="500" alt="Screenshot 2025-04-07 at 1 49 15 PM" src="https://github.com/user-attachments/assets/34530ed6-aee1-4531-ae61-cd3e8c4df2a6" />
+<img width="500" alt="Screenshot 2025-04-07 at 1 49 23 PM" src="https://github.com/user-attachments/assets/8b0873b7-a099-4a03-a0be-9cab98ebffab" />
 
+## 6. Season and Episode Posters
+
+There are two ways to manage posters: `Automatic` and `Manual`.
+
+### Automatic
+
+- The script can automatically copy both episode and season poster artwork into the correct Plex folder during processing.
+
+- Episode posters:
+  Place episode poster source images in `formula_posters/episode/`.
+
+  These files must be named using the episode number expected by the script.
+
+  Examples:
+  `formula_posters/episode/01.png`
+  `formula_posters/episode/02.png`
+  `formula_posters/episode/12.png`
+
+- Season posters:
+  Place season poster source images in `formula_posters/season/`.
+
+  These files must be named using the season number parsed by the script. In this setup, the season number corresponds to the Formula 1 round number.
+
+  Examples:
+  `formula_posters/season/01.png`
+  `formula_posters/season/02.png`
+  `formula_posters/season/24.png`
+
+- How the script uses them:
+  When a release is processed, the script parses the filename to determine the `season` and `episode` values. It then looks for matching poster files using those numbers.
+
+  Example release:
+  `Formula1.2025.Round24.Abu.Dhabi.Race.F1TV.WEB-DL...`
+
+  The script will look for:
+  `formula_posters/episode/12.png`
+  `formula_posters/season/24.png`
+
+- Output behavior:
+  If matching images are found, the script copies them into the final Plex media folder automatically.
+
+  Episode posters are copied and renamed to match the final media item name.
+
+  Season posters are copied as:
+  `seasonXX.png`
+
+- Important:
+  Filenames must match exactly.
+  Use `.png` files only.
+  Episode posters must use the script’s mapped episode number, not the event name.
+  Season posters must use the parsed season number from the release filename.
+
+### Manual
+
+- If you prefer not to use local poster files, you can manage artwork directly in Plex instead.
+- Plex documentation for local media assets:
+  [https://support.plex.tv/articles/200220717-local-media-assets-tv-shows/](https://support.plex.tv/articles/200220717-local-media-assets-tv-shows/)
+
+## 7. Examples
    
-**None Sprint Weekend**
+**Non-Sprint Weekend**
 
-<img width="1211" alt="Screenshot 2025-04-07 at 2 43 59 PM" src="https://github.com/user-attachments/assets/2f1a32b2-6dbb-48ef-beb7-7fa9e91b11e2" />
+<img width="500" alt="Screenshot 2025-04-07 at 2 43 59 PM" src="https://github.com/user-attachments/assets/2f1a32b2-6dbb-48ef-beb7-7fa9e91b11e2" />
 
 
 
 **Sprint Weekend**
 
-<img width="1177" alt="Screenshot 2025-04-07 at 2 51 05 PM" src="https://github.com/user-attachments/assets/815a8ae6-eef7-4764-9130-822522c84a16" />
+<img width="500" alt="Screenshot 2025-04-07 at 2 51 05 PM" src="https://github.com/user-attachments/assets/815a8ae6-eef7-4764-9130-822522c84a16" />
 
 
-**season01.png season02.png season03.png examples**
+**Seasons**
 
-<img width="645" alt="Screenshot 2025-04-07 at 2 55 58 PM" src="https://github.com/user-attachments/assets/7cea3ce8-e41d-4d4c-a5e1-40721a2d8730" />
+<img width="500" alt="Screenshot 2025-04-07 at 2 55 58 PM" src="https://github.com/user-attachments/assets/7cea3ce8-e41d-4d4c-a5e1-40721a2d8730" />
