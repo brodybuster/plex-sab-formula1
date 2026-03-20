@@ -1,0 +1,173 @@
+{
+  "2026": {
+    "01": {
+      "location": "Australia",
+      "aliases": [
+        "Australia"
+      ],
+      "sprint": false
+    },
+    "02": {
+      "location": "China",
+      "aliases": [
+        "China"
+      ],
+      "sprint": true
+    },
+    "03": {
+      "location": "Japan",
+      "aliases": [
+        "Japan"
+      ],
+      "sprint": false
+    },
+    "04": {
+      "location": "Miami",
+      "aliases": [
+        "Miami"
+      ],
+      "sprint": true
+    },
+    "05": {
+      "location": "Canada",
+      "aliases": [
+        "Canada"
+      ],
+      "sprint": false
+    },
+    "06": {
+      "location": "Monaco",
+      "aliases": [
+        "Monaco"
+      ],
+      "sprint": false
+    },
+    "07": {
+      "location": "Barcelona Catalunya",
+      "aliases": [
+        "Barcelona Catalunya",
+        "Spain Barcelona"
+      ],
+      "sprint": false
+    },
+    "08": {
+      "location": "Austria",
+      "aliases": [
+        "Austria"
+      ],
+      "sprint": false
+    },
+    "09": {
+      "location": "Great Britain",
+      "aliases": [
+        "Great Britain",
+        "Silverstone"
+      ],
+      "sprint": false
+    },
+    "10": {
+      "location": "Belgium",
+      "aliases": [
+        "Belgium",
+        "Spa"
+      ],
+      "sprint": true
+    },
+    "11": {
+      "location": "Hungary",
+      "aliases": [
+        "Hungary"
+      ],
+      "sprint": false
+    },
+    "12": {
+      "location": "Netherlands",
+      "aliases": [
+        "Netherlands",
+        "Zandvoort"
+      ],
+      "sprint": false
+    },
+    "13": {
+      "location": "Italy",
+      "aliases": [
+        "Italy",
+        "Monza"
+      ],
+      "sprint": false
+    },
+    "14": {
+      "location": "Spain",
+      "aliases": [
+        "Spain",
+        "Madrid"
+      ],
+      "sprint": false
+    },
+    "15": {
+      "location": "Azerbaijan",
+      "aliases": [
+        "Azerbaijan",
+        "Baku"
+      ],
+      "sprint": false
+    },
+    "16": {
+      "location": "Singapore",
+      "aliases": [
+        "Singapore"
+      ],
+      "sprint": false
+    },
+    "17": {
+      "location": "United States",
+      "aliases": [
+        "United States",
+        "USA COTA",
+        "COTA",
+        "Austin"
+      ],
+      "sprint": true
+    },
+    "18": {
+      "location": "Mexico",
+      "aliases": [
+        "Mexico",
+        "Mexico City"
+      ],
+      "sprint": false
+    },
+    "19": {
+      "location": "Brazil",
+      "aliases": [
+        "Brazil",
+        "Sao Paulo",
+        "Interlagos"
+      ],
+      "sprint": true
+    },
+    "20": {
+      "location": "Las Vegas",
+      "aliases": [
+        "Las Vegas",
+        "USA Las Vegas"
+      ],
+      "sprint": false
+    },
+    "21": {
+      "location": "Qatar",
+      "aliases": [
+        "Qatar",
+        "Lusail"
+      ],
+      "sprint": true
+    },
+    "22": {
+      "location": "Abu Dhabi",
+      "aliases": [
+        "Abu Dhabi"
+      ],
+      "sprint": false
+    }
+  }
+}
