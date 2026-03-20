@@ -206,8 +206,9 @@ parse_billie_release_metadata() {
   IFS='.' read -r -a parts <<< "${stem}"
   IFS='.' read -r -a parts_lower <<< "$(to_lower "${stem}")"
 
-  # Expected BILLIE-style pattern:
+  # Expected BILLIE-style patterns:
   # Formula1.<year>.<location>.Grand.Prix.<event...>.<tech tags...>-BILLIE
+  # Formula1.<year>.<location>.Grand.Prix.<tech tags...>-BILLIE  (full race)
   # Only core F1 sessions are accepted here. Academy, warmup, and split races are rejected.
   if [[ ${#parts[@]} -lt 5 ]]; then
     return 1
@@ -230,6 +231,9 @@ parse_billie_release_metadata() {
       grand.prix.sprint.qualifying.*) KEY="Sprint.Qualifying"; EPISODE="02"; event_parts=4 ;;
       grand.prix.sprint.race.one.*|grand.prix.sprint.race.two.*|grand.prix.race.one.*|grand.prix.race.two.*|weekend.warmup.*)
         return 1
+        ;;
+      grand.prix.2160p.*|grand.prix.1080p.*|grand.prix.720p.*|grand.prix.576p.*|grand.prix.480p.*)
+        KEY="Race"; EPISODE="12"; event_parts=2
         ;;
       grand.prix.sprint.race.*)       KEY="Sprint"; EPISODE="04"; event_parts=4 ;;
       grand.prix.qualifying.*)        KEY="Qualifying"; EPISODE="09"; event_parts=3 ;;
