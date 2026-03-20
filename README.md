@@ -9,6 +9,8 @@ The current Python script supports:
 - a generated lookup table that maps TVDB episode codes into `Season XX` race folders
 - safe replacement rules based on preferred resolution, with `1080p` as the default preference
 
+This project moved from shell to Python so the importer can handle structured TVDB episode lookups, multi-file jobs, and replacement logic more reliably than a large post-processing shell script.
+
 ## Supported Release Logic
 
 The script currently understands:
@@ -158,8 +160,8 @@ The script creates:
 
 - year folders such as `F1 2026`
 - season folders such as `Season 02`
-- media files such as `S02E12 - China Grand Prix - Race.mkv`
-- episode posters such as `S02E12 - China Grand Prix - Race.png`
+- media files such as `S02E07 - China Grand Prix - Race.mkv`
+- episode posters such as `S02E07 - China Grand Prix - Race.png`
 - season posters such as `season02.png`
 
 The script also writes import state outside the Plex-visible folders:
@@ -203,16 +205,16 @@ These files must be named using the season number parsed by the script. In this 
 
 **How the script uses them**
 
-When a release is processed, the script parses the filename to determine the `season` and `episode` values. It then looks for matching poster files using those numbers.
+When a release is processed, the script parses the TVDB episode code, looks it up in `config/round_schedules.json`, and determines the target `season` and per-weekend `episode` values. It then looks for matching poster files using those numbers.
 
 Example release:
 
-`Formula1.2025.Round24.Abu.Dhabi.Race.F1TV.WEB-DL...`
+`Formula1.S2026E19.China.Race.1080p.F1TV.WEB-DL.AAC2.0.H.264-playWEB`
 
 The script will look for:
 
-- `formula_posters/episode/12.png`
-- `formula_posters/season/24.png`
+- `formula_posters/episode/07.png`
+- `formula_posters/season/02.png`
 
 **Output behavior**
 
@@ -240,11 +242,11 @@ Plex documentation for local media assets:
 
 ## Updating For A New Season
 
-The round and location mapping lives in:
+The TVDB episode-to-season lookup lives in:
 
 - `config/round_schedules.json`
 
-By default, `build_round_schedule.py` can scrape the calendar URL from `config/formula1_config.toml` and rebuild the round mapping automatically:
+By default, `build_round_schedule.py` can scrape the TVDB season URL from `config/formula1_config.toml` and rebuild the lookup automatically:
 
 ```sh
 python3 build_round_schedule.py --year 2026
@@ -259,9 +261,9 @@ python3 build_round_schedule.py --year 2027 --input season_2027.txt
 Example input format:
 
 ```text
-01 | Australia | Australia, Melbourne
-02 | China     | China, Shanghai
-04 | Bahrain   | Bahrain, Sakhir | canceled
+S2026E10 | Australia | FP1                | Australia (Practice 1)
+S2026E16 | China     | Sprint.Qualifying  | China (Sprint Qualifying)
+S2026E19 | China     | Race               | China (Race)
 ```
 
 See `season_schedule_template.txt` for the expected format.
