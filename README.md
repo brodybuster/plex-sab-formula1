@@ -1,121 +1,193 @@
-## Note: This script is meant to work with MWR or BILLIE for the 2026 Season
+## Formula 1 SABnzbd Post-Processing
 
-## 1. Create a Custom RSS feed in your NZB Indexer Provider
-* I use the following key words: formula1 2026
+This repo provides a SABnzbd post-processing script for importing Formula 1 releases into a Plex TV library.
 
-## 2. SABnzbd
+The current Python script supports:
 
-- Place the `formula1_sabnzbd.sh` script into the script directory defined in your SABnzbd configuration. Make sure it is executable.
-- Download the `formula_posters` directory and place it somewhere SABnzbd can access it. To keep things simple, place it in the same directory as `formula1_sabnzbd.sh`.
-- If you are using Docker, make sure both the script path and the poster path are accessible from inside the SABnzbd container.
-- Edit the paths in the script to match your environment. Both `DEST_DIR` and the poster directories must be writable and accessible by SABnzbd.
-- The script is designed to prefer `F1LIVE` coverage over `SKY`, while still allowing `SKY` releases to be downloaded until a preferred release becomes available.
-- Copy and paste the custom RSS feed URL from your indexer into a new RSS feed in SABnzbd.
+- `playWEB` releases that use TVDB-style `S2026E##` numbering
+- multi-file jobs, so one SAB download can import multiple sessions
+- a generated lookup table that maps TVDB episode codes into `Season XX` race folders
+- safe replacement rules based on preferred resolution, with `1080p` as the default preference
 
-Add the following filters and choose the `formula1_sabnzbd.sh` script for post-processing for your new RSS Feed:
+This project moved from shell to Python so the importer can handle structured TVDB episode lookups, multi-file jobs, and replacement logic more reliably than a large post-processing shell script.
 
-Recommended SABnzbd RSS Filters:
+## Supported Release Logic
 
-```text
-0 : Requires : re: MWR|BILLIE
-1 : Reject : re: proper|notebook|multi|round00|academy|warmup|race\.one|race\.two|sprint\.race\.one|sprint\.race\.two
-2 : Requires : re: 1080p
-3 : Requires : re: FP1|FP2|FP3|Sprint|Qualifying|Race|Practice\.One|Practice\.Two|Practice\.Three|Grand\.Prix
-4 : *
-```
+The script currently understands:
 
-* Press **Read Feed**, then **Apply Filters**
-* Note: On the first loading of the feed you will need to Force Download any files that qualify. Subsequent RSS Feeds will be automatically refreshed every hour. 
+- `playWEB` Formula 1 releases with TVDB-style naming such as `Formula1.S2026E19.China.Race.1080p...-playWEB`
 
-## 3. Set your agent for Plex Media Shows to use local assets
-<img width="500" alt="Screenshot 2025-04-07 at 1 51 02 PM" src="https://github.com/user-attachments/assets/07fc730e-6d56-4e23-9a98-4df9623a2019" />
+Unsupported or unwanted items are rejected by the script during post-processing. That means the script can protect your library even if a broad RSS rule lets something through.
 
-## 4. Folder Structure
+If bandwidth matters, you should still use SAB RSS filters to prevent those releases from downloading in the first place.
 
-The script expects a base Formula 1 library folder to already exist. From there, it will automatically create the year and season folders it needs as new content is processed.
+## File Layout
 
-### Required Base Folder
+Place these files together inside your SAB scripts path:
 
-You must create the main Formula 1 library folder manually.
+- `formula1_sabnzbd.py`
+- `config/formula1_config.toml`
+- `config/round_schedules.json`
+- `formula_posters/episode/*.png`
+- `formula_posters/season/*.png`
 
 Example:
-`/media/pool.media/formula1`
-
-This should match the `DEST_DIR` value defined in the script.
-
-### Automatically Created by the Script
-
-Once the base folder exists, the script will automatically create:
-
-- year folders such as `F1 2026`
-- season folders such as `Season 01`
-- renamed media files such as `S01E01 - Australia Grand Prix - FP1.mkv`
-- episode poster files such as `S01E01 - Australia Grand Prix - FP1.png`
-- season poster files such as `season01.png`
-
-### Example Structure
 
 ```text
-formula1                         (must be created manually)
-└── F1 2026                      (created automatically by the script)
-    ├── Season 01                (created automatically by the script)
-    │   ├── season01.png         (copied by the script if a matching season poster exists)
-    │   ├── S01E01 - Australia Grand Prix - FP1.mkv
-    │   ├── S01E01 - Australia Grand Prix - FP1.png
-    │   ├── S01E02 - Australia Grand Prix - FP2.mkv
-    │   └── S01E02 - Australia Grand Prix - FP2.png
-    └── Season 02                (created automatically by the script)
+/config/scripts/
+├── formula1_sabnzbd.py
+├── config/
+│   ├── formula1_config.toml
+│   └── round_schedules.json
+└── formula_posters/
+    ├── episode/
+    │   ├── 01.png
+    │   └── 12.png
+    └── season/
+        ├── 01.png
+        └── 22.png
 ```
 
-### What Must Be Created Manually
+## SABnzbd Setup
 
-You must create:
+1. Place `formula1_sabnzbd.py` in your SAB script directory.
+2. Make it executable.
+3. Place the `config/` folder next to the script.
+4. Place the `formula_posters/` folder somewhere SAB can access it.
+5. Update paths in `config/formula1_config.toml` to match your environment.
+6. Choose `formula1_sabnzbd.py` as the post-processing script for your Formula 1 RSS feed.
 
-- the base Formula 1 library folder defined by `DEST_DIR`
-- the source poster folders if you want automatic poster support:
-  - `formula_posters/episode/`
-  - `formula_posters/season/`
-- the source poster image files stored inside those folders
+If you use Docker, all of these paths must exist inside the SAB container, not just on the host.
 
-### What the Script Handles Automatically
+## What The Script Imports
 
-The script will:
+The script tracks core race-weekend sessions:
 
-- create year folders such as `F1 2026`
-- create season folders such as `Season 01`
-- move and rename the processed video file into the correct Plex folder
-- copy a matching episode poster into the season folder if one exists
-- copy a matching season poster into the season folder if one exists
+- `FP1`
+- `FP2`
+- `FP3`
+- `Sprint.Qualifying`
+- `Sprint`
+- `Qualifying`
+- `Race`
 
-### Important Note
+This release-group workflow does not currently target pre-show or post-show extras.
 
-The script does not generate poster artwork.
+## Replacement Rules
 
-It only copies poster files that already exist in the configured poster directories. If no matching poster file is found, the media file will still be imported normally.
+The script prefers the configured `preferred_resolution`, which defaults to `1080p`.
 
+Current default behavior:
 
-## 5. Create a new library for your Formula 1 Show
+- a `1080p` release is preferred over `720p` or `2160p`
+- if two releases have the same preferred-status, the larger file wins
+
+Only these explicit resolutions are accepted:
+
+- `720p`
+- `1080p`
+- `2160p`
+
+If a filename includes another explicit resolution such as `480p` or `576p`, it is rejected.
+
+If no resolution token is present, the script treats it as `1080p` for ranking.
+
+## Rejected Files
+
+The script rejects unsupported or unwanted files during post-processing.
+
+Rejected files are not imported into Plex, and they are not saved to a separate unmatched folder.
+
+This is useful when:
+
+- a release name does not match the supported parser
+- a release uses an unsupported resolution
+- a release is outside the accepted Formula 1 patterns
+
+If you want to avoid downloading those files at all, use SAB RSS filters.
+
+## Recommended SAB RSS Filters
+
+Use SAB RSS filters as a coarse front-end filter, especially if you want to save bandwidth.
+
+Example:
+
+```text
+0 : Requires : re: playWEB
+1 : Reject : re: part\.1|part\.2
+2 : *
+```
+
+The post-processing script remains the final safety layer, but RSS filters are the right place to reduce unwanted downloads before they consume bandwidth.
+
+## Plex Setup
+
+### Use Local Assets
+
+- enable local media assets or prefer local artwork so copied posters are used
+<img width="500" alt="Screenshot 2025-04-07 at 1 51 02 PM" src="https://github.com/user-attachments/assets/07fc730e-6d56-4e23-9a98-4df9623a2019" />
+
+### Create The Library
+
+Create a new Plex library with these recommendations:
+
+- library type: `TV Shows`
+- library path: your Formula 1 base folder, for example `/media/pool.media/formula1`
+- under `Advanced`, set `Scanner` to `Plex Series Scanner`
+- under `Advanced`, set `Agent` to `Personal Media Shows`
 <img width="500" alt="Screenshot 2025-04-07 at 1 48 43 PM" src="https://github.com/user-attachments/assets/42296cae-ee32-4077-8497-572fca15b7db" />
 <img width="500" alt="Screenshot 2025-04-07 at 1 48 54 PM" src="https://github.com/user-attachments/assets/71a7e9d6-8346-47dd-b2e0-e2a9f4721dca" />
 <img width="500" alt="Screenshot 2025-04-07 at 1 49 02 PM" src="https://github.com/user-attachments/assets/75f00ee0-7ec5-4ea4-b3a2-05ac38916c21" />
 <img width="500" alt="Screenshot 2025-04-07 at 1 49 15 PM" src="https://github.com/user-attachments/assets/34530ed6-aee1-4531-ae61-cd3e8c4df2a6" />
 <img width="500" alt="Screenshot 2025-04-07 at 1 49 23 PM" src="https://github.com/user-attachments/assets/8b0873b7-a099-4a03-a0be-9cab98ebffab" />
 
-## 6. Season and Episode Posters
 
-There are two ways to manage posters: `Automatic` and `Manual`.
+This script is designed around a TV-style Plex library layout, with each race weekend stored as a `Season XX` folder and each session named like an episode.
+
+If posters or renamed sessions do not appear immediately in Plex, refresh metadata after new imports.
+
+## Plex Output Structure
+
+The script expects the base destination directory to already exist.
+
+Example:
+
+```text
+/media/pool.media/formula1
+```
+
+The script creates:
+
+- year folders such as `F1 2026`
+- season folders such as `Season 02`
+- media files such as `S02E07 - China Grand Prix - Race.mkv`
+- episode posters such as `S02E07 - China Grand Prix - Race.png`
+- season posters such as `season02.png`
+
+The script also writes import state outside the Plex-visible folders:
+
+```text
+/media/pool.media/formula1/.metadata/
+```
+
+Each round state file tracks:
+
+- expected core sessions
+- present sessions
+- missing core sessions
+- file metadata
+
+## Posters
+
+Poster copying is optional.
 
 ### Automatic
-
-The script can automatically copy both episode and season poster artwork into the correct Plex folder during processing.
 
 **Episode posters**
 
 Place episode poster source images in `formula_posters/episode/`.
 
 These files must be named using the episode number expected by the script.
-
-Examples:
 
 - `formula_posters/episode/01.png`
 - `formula_posters/episode/02.png`
@@ -127,24 +199,22 @@ Place season poster source images in `formula_posters/season/`.
 
 These files must be named using the season number parsed by the script. In this setup, the season number corresponds to the Formula 1 round number.
 
-Examples:
-
 - `formula_posters/season/01.png`
 - `formula_posters/season/02.png`
 - `formula_posters/season/24.png`
 
 **How the script uses them**
 
-When a release is processed, the script parses the filename to determine the `season` and `episode` values. It then looks for matching poster files using those numbers.
+When a release is processed, the script parses the TVDB episode code, looks it up in `config/round_schedules.json`, and determines the target `season` and per-weekend `episode` values. It then looks for matching poster files using those numbers.
 
 Example release:
 
-`Formula1.2025.Round24.Abu.Dhabi.Race.F1TV.WEB-DL...`
+`Formula1.S2026E19.China.Race.1080p.F1TV.WEB-DL.AAC2.0.H.264-playWEB`
 
 The script will look for:
 
-- `formula_posters/episode/12.png`
-- `formula_posters/season/24.png`
+- `formula_posters/episode/07.png`
+- `formula_posters/season/02.png`
 
 **Output behavior**
 
@@ -153,6 +223,8 @@ If matching images are found, the script copies them into the final Plex media f
 Episode posters are copied and renamed to match the final media item name.
 
 Season posters are copied as `seasonXX.png`.
+
+If a matching poster is missing, the media file still imports normally.
 
 **Important**
 
@@ -165,22 +237,33 @@ Season posters are copied as `seasonXX.png`.
 
 If you prefer not to use local poster files, you can manage artwork directly in Plex instead.
 
-Plex documentation for local media assets:  
+Plex documentation for local media assets:
 [https://support.plex.tv/articles/200220717-local-media-assets-tv-shows/](https://support.plex.tv/articles/200220717-local-media-assets-tv-shows/)
 
-## 7. Examples
-   
-**Non-Sprint Weekend**
+## Updating For A New Season
 
-<img width="500" alt="Screenshot 2025-04-07 at 2 43 59 PM" src="https://github.com/user-attachments/assets/2f1a32b2-6dbb-48ef-beb7-7fa9e91b11e2" />
+The TVDB episode-to-season lookup lives in:
 
+- `config/round_schedules.json`
 
+By default, `build_round_schedule.py` can scrape the TVDB season URL from `config/formula1_config.toml` and rebuild the lookup automatically:
 
-**Sprint Weekend**
+```sh
+python3 build_round_schedule.py --year 2026
+```
 
-<img width="500" alt="Screenshot 2025-04-07 at 2 51 05 PM" src="https://github.com/user-attachments/assets/815a8ae6-eef7-4764-9130-822522c84a16" />
+You can also build or override a season entry from a simple text file with:
 
+```sh
+python3 build_round_schedule.py --year 2027 --input season_2027.txt
+```
 
-**Seasons**
+Example input format:
 
-<img width="500" alt="Screenshot 2025-04-07 at 2 55 58 PM" src="https://github.com/user-attachments/assets/7cea3ce8-e41d-4d4c-a5e1-40721a2d8730" />
+```text
+S2026E10 | Australia | FP1                | Australia (Practice 1)
+S2026E16 | China     | Sprint.Qualifying  | China (Sprint Qualifying)
+S2026E19 | China     | Race               | China (Race)
+```
+
+See `season_schedule_template.txt` for the expected format.

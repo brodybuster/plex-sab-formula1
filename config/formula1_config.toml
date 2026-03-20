@@ -1,0 +1,9 @@
+dest_dir = "/media/pool.media/formula1"
+poster_episode_dir = "/config/scripts/formula_posters/episode"
+poster_season_dir = "/config/scripts/formula_posters/season"
+state_dirname = ".metadata"
+schedule_file = "round_schedules.json"
+delete_rejected_files = true
+preferred_resolution = "1080p"
+calendar_url = "https://www.thetvdb.com/series/formula-1/seasons/official/2026"
+release_group = "playWEB"

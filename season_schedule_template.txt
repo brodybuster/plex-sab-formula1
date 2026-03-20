@@ -1,0 +1,7 @@
+# Fallback format for build_round_schedule.py when not scraping TVDB
+# episode_code | location | key | title
+#
+# Example:
+# S2026E10 | Australia | FP1                | Australia (Practice 1)
+# S2026E16 | China     | Sprint.Qualifying  | China (Sprint Qualifying)
+# S2026E19 | China     | Race               | China (Race)

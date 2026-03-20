@@ -1,0 +1,416 @@
+{
+  "2026": {
+    "seasons": {
+      "01": {
+        "location": "Australia",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E10", "S2026E11", "S2026E12", "S2026E13", "S2026E14"],
+        "episodes": {
+          "S2026E10": {"key": "FP1", "title": "Australia (Practice 1)", "episode": "01"},
+          "S2026E11": {"key": "FP2", "title": "Australia (Practice 2)", "episode": "02"},
+          "S2026E12": {"key": "FP3", "title": "Australia (Practice 3)", "episode": "03"},
+          "S2026E13": {"key": "Qualifying", "title": "Australia (Qualifying)", "episode": "06"},
+          "S2026E14": {"key": "Race", "title": "Australia (Race)", "episode": "07"}
+        }
+      },
+      "02": {
+        "location": "China",
+        "expected_core_sessions": ["FP1", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"],
+        "episode_codes": ["S2026E15", "S2026E16", "S2026E17", "S2026E18", "S2026E19"],
+        "episodes": {
+          "S2026E15": {"key": "FP1", "title": "China (Practice)", "episode": "01"},
+          "S2026E16": {"key": "Sprint.Qualifying", "title": "China (Sprint Qualifying)", "episode": "04"},
+          "S2026E17": {"key": "Sprint", "title": "China (Sprint Race)", "episode": "05"},
+          "S2026E18": {"key": "Qualifying", "title": "China (Qualifying)", "episode": "06"},
+          "S2026E19": {"key": "Race", "title": "China (Race)", "episode": "07"}
+        }
+      },
+      "03": {
+        "location": "Japan",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E20", "S2026E21", "S2026E22", "S2026E23", "S2026E24"],
+        "episodes": {
+          "S2026E20": {"key": "FP1", "title": "Japan (Practice 1)", "episode": "01"},
+          "S2026E21": {"key": "FP2", "title": "Japan (Practice 2)", "episode": "02"},
+          "S2026E22": {"key": "FP3", "title": "Japan (Practice 3)", "episode": "03"},
+          "S2026E23": {"key": "Qualifying", "title": "Japan (Qualifying)", "episode": "06"},
+          "S2026E24": {"key": "Race", "title": "Japan (Race)", "episode": "07"}
+        }
+      },
+      "04": {
+        "location": "Bahrain",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E25", "S2026E26", "S2026E27", "S2026E28", "S2026E29"],
+        "episodes": {
+          "S2026E25": {"key": "FP1", "title": "Bahrain (Practice 1)", "episode": "01"},
+          "S2026E26": {"key": "FP2", "title": "Bahrain (Practice 2)", "episode": "02"},
+          "S2026E27": {"key": "FP3", "title": "Bahrain (Practice 3)", "episode": "03"},
+          "S2026E28": {"key": "Qualifying", "title": "Bahrain (Qualifying)", "episode": "06"},
+          "S2026E29": {"key": "Race", "title": "Bahrain (Race)", "episode": "07"}
+        }
+      },
+      "05": {
+        "location": "Saudi Arabia",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E30", "S2026E31", "S2026E32", "S2026E33", "S2026E34"],
+        "episodes": {
+          "S2026E30": {"key": "FP1", "title": "Saudi Arabia (Practice 1)", "episode": "01"},
+          "S2026E31": {"key": "FP2", "title": "Saudi Arabia (Practice 2)", "episode": "02"},
+          "S2026E32": {"key": "FP3", "title": "Saudi Arabia (Practice 3)", "episode": "03"},
+          "S2026E33": {"key": "Qualifying", "title": "Saudi Arabia (Qualifying)", "episode": "06"},
+          "S2026E34": {"key": "Race", "title": "Saudi Arabia (Race)", "episode": "07"}
+        }
+      },
+      "06": {
+        "location": "Miami",
+        "expected_core_sessions": ["FP1", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"],
+        "episode_codes": ["S2026E35", "S2026E36", "S2026E37", "S2026E38", "S2026E39"],
+        "episodes": {
+          "S2026E35": {"key": "FP1", "title": "Miami (Practice)", "episode": "01"},
+          "S2026E36": {"key": "Sprint.Qualifying", "title": "Miami (Sprint Qualifying)", "episode": "04"},
+          "S2026E37": {"key": "Sprint", "title": "Miami (Sprint Race)", "episode": "05"},
+          "S2026E38": {"key": "Qualifying", "title": "Miami (Qualifying)", "episode": "06"},
+          "S2026E39": {"key": "Race", "title": "Miami (Race)", "episode": "07"}
+        }
+      },
+      "07": {
+        "location": "Canada",
+        "expected_core_sessions": ["FP1", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"],
+        "episode_codes": ["S2026E40", "S2026E41", "S2026E42", "S2026E43", "S2026E44"],
+        "episodes": {
+          "S2026E40": {"key": "FP1", "title": "Canada (Practice)", "episode": "01"},
+          "S2026E41": {"key": "Sprint.Qualifying", "title": "Canada (Sprint Qualifying)", "episode": "04"},
+          "S2026E42": {"key": "Sprint", "title": "Canada (Sprint Race)", "episode": "05"},
+          "S2026E43": {"key": "Qualifying", "title": "Canada (Qualifying)", "episode": "06"},
+          "S2026E44": {"key": "Race", "title": "Canada (Race)", "episode": "07"}
+        }
+      },
+      "08": {
+        "location": "Monaco",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E45", "S2026E46", "S2026E47", "S2026E48", "S2026E49"],
+        "episodes": {
+          "S2026E45": {"key": "FP1", "title": "Monaco (Practice 1)", "episode": "01"},
+          "S2026E46": {"key": "FP2", "title": "Monaco (Practice 2)", "episode": "02"},
+          "S2026E47": {"key": "FP3", "title": "Monaco (Practice 3)", "episode": "03"},
+          "S2026E48": {"key": "Qualifying", "title": "Monaco (Qualifying)", "episode": "06"},
+          "S2026E49": {"key": "Race", "title": "Monaco (Race)", "episode": "07"}
+        }
+      },
+      "09": {
+        "location": "Barcelona Catalunya",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E50", "S2026E51", "S2026E52", "S2026E53", "S2026E54"],
+        "episodes": {
+          "S2026E50": {"key": "FP1", "title": "Barcelona-Catalunya (Practice 1)", "episode": "01"},
+          "S2026E51": {"key": "FP2", "title": "Barcelona-Catalunya (Practice 2)", "episode": "02"},
+          "S2026E52": {"key": "FP3", "title": "Barcelona-Catalunya (Practice 3)", "episode": "03"},
+          "S2026E53": {"key": "Qualifying", "title": "Barcelona-Catalunya (Qualifying)", "episode": "06"},
+          "S2026E54": {"key": "Race", "title": "Barcelona-Catalunya (Race)", "episode": "07"}
+        }
+      },
+      "10": {
+        "location": "Austria",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E55", "S2026E56", "S2026E57", "S2026E58", "S2026E59"],
+        "episodes": {
+          "S2026E55": {"key": "FP1", "title": "Austria (Practice 1)", "episode": "01"},
+          "S2026E56": {"key": "FP2", "title": "Austria (Practice 2)", "episode": "02"},
+          "S2026E57": {"key": "FP3", "title": "Austria (Practice 3)", "episode": "03"},
+          "S2026E58": {"key": "Qualifying", "title": "Austria (Qualifying)", "episode": "06"},
+          "S2026E59": {"key": "Race", "title": "Austria (Race)", "episode": "07"}
+        }
+      },
+      "11": {
+        "location": "Great Britain",
+        "expected_core_sessions": ["FP1", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"],
+        "episode_codes": ["S2026E60", "S2026E61", "S2026E62", "S2026E63", "S2026E64"],
+        "episodes": {
+          "S2026E60": {"key": "FP1", "title": "Great Britain (Practice)", "episode": "01"},
+          "S2026E61": {"key": "Sprint.Qualifying", "title": "Great Britain (Sprint Qualifying)", "episode": "04"},
+          "S2026E62": {"key": "Sprint", "title": "Great Britain (Sprint Race)", "episode": "05"},
+          "S2026E63": {"key": "Qualifying", "title": "Great Britain (Qualifying)", "episode": "06"},
+          "S2026E64": {"key": "Race", "title": "Great Britain (Race)", "episode": "07"}
+        }
+      },
+      "12": {
+        "location": "Belgium",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E65", "S2026E66", "S2026E67", "S2026E68", "S2026E69"],
+        "episodes": {
+          "S2026E65": {"key": "FP1", "title": "Belgium (Practice 1)", "episode": "01"},
+          "S2026E66": {"key": "FP2", "title": "Belgium (Practice 2)", "episode": "02"},
+          "S2026E67": {"key": "FP3", "title": "Belgium (Practice 3)", "episode": "03"},
+          "S2026E68": {"key": "Qualifying", "title": "Belgium (Qualifying)", "episode": "06"},
+          "S2026E69": {"key": "Race", "title": "Belgium (Race)", "episode": "07"}
+        }
+      },
+      "13": {
+        "location": "Hungary",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E70", "S2026E71", "S2026E72", "S2026E73", "S2026E74"],
+        "episodes": {
+          "S2026E70": {"key": "FP1", "title": "Hungary (Practice 1)", "episode": "01"},
+          "S2026E71": {"key": "FP2", "title": "Hungary (Practice 2)", "episode": "02"},
+          "S2026E72": {"key": "FP3", "title": "Hungary (Practice 3)", "episode": "03"},
+          "S2026E73": {"key": "Qualifying", "title": "Hungary (Qualifying)", "episode": "06"},
+          "S2026E74": {"key": "Race", "title": "Hungary (Race)", "episode": "07"}
+        }
+      },
+      "14": {
+        "location": "Netherlands",
+        "expected_core_sessions": ["FP1", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"],
+        "episode_codes": ["S2026E75", "S2026E76", "S2026E77", "S2026E78", "S2026E79"],
+        "episodes": {
+          "S2026E75": {"key": "FP1", "title": "Netherlands (Practice)", "episode": "01"},
+          "S2026E76": {"key": "Sprint.Qualifying", "title": "Netherlands (Sprint Qualifying)", "episode": "04"},
+          "S2026E77": {"key": "Sprint", "title": "Netherlands (Sprint Race)", "episode": "05"},
+          "S2026E78": {"key": "Qualifying", "title": "Netherlands (Qualifying)", "episode": "06"},
+          "S2026E79": {"key": "Race", "title": "Netherlands (Race)", "episode": "07"}
+        }
+      },
+      "15": {
+        "location": "Italy",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E80", "S2026E81", "S2026E82", "S2026E83", "S2026E84"],
+        "episodes": {
+          "S2026E80": {"key": "FP1", "title": "Italy (Practice 1)", "episode": "01"},
+          "S2026E81": {"key": "FP2", "title": "Italy (Practice 2)", "episode": "02"},
+          "S2026E82": {"key": "FP3", "title": "Italy (Practice 3)", "episode": "03"},
+          "S2026E83": {"key": "Qualifying", "title": "Italy (Qualifying)", "episode": "06"},
+          "S2026E84": {"key": "Race", "title": "Italy (Race)", "episode": "07"}
+        }
+      },
+      "16": {
+        "location": "Spain",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E85", "S2026E86", "S2026E87", "S2026E88", "S2026E89"],
+        "episodes": {
+          "S2026E85": {"key": "FP1", "title": "Spain (Practice 1)", "episode": "01"},
+          "S2026E86": {"key": "FP2", "title": "Spain (Practice 2)", "episode": "02"},
+          "S2026E87": {"key": "FP3", "title": "Spain (Practice 3)", "episode": "03"},
+          "S2026E88": {"key": "Qualifying", "title": "Spain (Qualifying)", "episode": "06"},
+          "S2026E89": {"key": "Race", "title": "Spain (Race)", "episode": "07"}
+        }
+      },
+      "17": {
+        "location": "Azerbaijan",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E90", "S2026E91", "S2026E92", "S2026E93", "S2026E94"],
+        "episodes": {
+          "S2026E90": {"key": "FP1", "title": "Azerbaijan (Practice 1)", "episode": "01"},
+          "S2026E91": {"key": "FP2", "title": "Azerbaijan (Practice 2)", "episode": "02"},
+          "S2026E92": {"key": "FP3", "title": "Azerbaijan (Practice 3)", "episode": "03"},
+          "S2026E93": {"key": "Qualifying", "title": "Azerbaijan (Qualifying)", "episode": "06"},
+          "S2026E94": {"key": "Race", "title": "Azerbaijan (Race)", "episode": "07"}
+        }
+      },
+      "18": {
+        "location": "Singapore",
+        "expected_core_sessions": ["FP1", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"],
+        "episode_codes": ["S2026E95", "S2026E96", "S2026E97", "S2026E98", "S2026E99"],
+        "episodes": {
+          "S2026E95": {"key": "FP1", "title": "Singapore (Practice)", "episode": "01"},
+          "S2026E96": {"key": "Sprint.Qualifying", "title": "Singapore (Sprint Qualifying)", "episode": "04"},
+          "S2026E97": {"key": "Sprint", "title": "Singapore (Sprint Race)", "episode": "05"},
+          "S2026E98": {"key": "Qualifying", "title": "Singapore (Qualifying)", "episode": "06"},
+          "S2026E99": {"key": "Race", "title": "Singapore (Race)", "episode": "07"}
+        }
+      },
+      "19": {
+        "location": "United States",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E100", "S2026E101", "S2026E102", "S2026E103", "S2026E104"],
+        "episodes": {
+          "S2026E100": {"key": "FP1", "title": "United States (Practice 1)", "episode": "01"},
+          "S2026E101": {"key": "FP2", "title": "United States (Practice 2)", "episode": "02"},
+          "S2026E102": {"key": "FP3", "title": "United States (Practice 3)", "episode": "03"},
+          "S2026E103": {"key": "Qualifying", "title": "United States (Qualifying)", "episode": "06"},
+          "S2026E104": {"key": "Race", "title": "United States (Race)", "episode": "07"}
+        }
+      },
+      "20": {
+        "location": "Mexico",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E105", "S2026E106", "S2026E107", "S2026E108", "S2026E109"],
+        "episodes": {
+          "S2026E105": {"key": "FP1", "title": "Mexico (Practice 1)", "episode": "01"},
+          "S2026E106": {"key": "FP2", "title": "Mexico (Practice 2)", "episode": "02"},
+          "S2026E107": {"key": "FP3", "title": "Mexico (Practice 3)", "episode": "03"},
+          "S2026E108": {"key": "Qualifying", "title": "Mexico (Qualifying)", "episode": "06"},
+          "S2026E109": {"key": "Race", "title": "Mexico (Race)", "episode": "07"}
+        }
+      },
+      "21": {
+        "location": "Brazil",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E110", "S2026E111", "S2026E112", "S2026E113", "S2026E114"],
+        "episodes": {
+          "S2026E110": {"key": "FP1", "title": "Brazil (Practice 1)", "episode": "01"},
+          "S2026E111": {"key": "FP2", "title": "Brazil (Practice 2)", "episode": "02"},
+          "S2026E112": {"key": "FP3", "title": "Brazil (Practice 3)", "episode": "03"},
+          "S2026E113": {"key": "Qualifying", "title": "Brazil (Qualifying)", "episode": "06"},
+          "S2026E114": {"key": "Race", "title": "Brazil (Race)", "episode": "07"}
+        }
+      },
+      "22": {
+        "location": "Las Vegas",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E115", "S2026E116", "S2026E117", "S2026E118", "S2026E119"],
+        "episodes": {
+          "S2026E115": {"key": "FP1", "title": "Las Vegas (Practice 1)", "episode": "01"},
+          "S2026E116": {"key": "FP2", "title": "Las Vegas (Practice 2)", "episode": "02"},
+          "S2026E117": {"key": "FP3", "title": "Las Vegas (Practice 3)", "episode": "03"},
+          "S2026E118": {"key": "Qualifying", "title": "Las Vegas (Qualifying)", "episode": "06"},
+          "S2026E119": {"key": "Race", "title": "Las Vegas (Race)", "episode": "07"}
+        }
+      },
+      "23": {
+        "location": "Qatar",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E120", "S2026E121", "S2026E122", "S2026E123", "S2026E124"],
+        "episodes": {
+          "S2026E120": {"key": "FP1", "title": "Qatar (Practice 1)", "episode": "01"},
+          "S2026E121": {"key": "FP2", "title": "Qatar (Practice 2)", "episode": "02"},
+          "S2026E122": {"key": "FP3", "title": "Qatar (Practice 3)", "episode": "03"},
+          "S2026E123": {"key": "Qualifying", "title": "Qatar (Qualifying)", "episode": "06"},
+          "S2026E124": {"key": "Race", "title": "Qatar (Race)", "episode": "07"}
+        }
+      },
+      "24": {
+        "location": "Abu Dhabi",
+        "expected_core_sessions": ["FP1", "FP2", "FP3", "Qualifying", "Race"],
+        "episode_codes": ["S2026E125", "S2026E126", "S2026E127", "S2026E128", "S2026E129"],
+        "episodes": {
+          "S2026E125": {"key": "FP1", "title": "Abu Dhabi (Practice 1)", "episode": "01"},
+          "S2026E126": {"key": "FP2", "title": "Abu Dhabi (Practice 2)", "episode": "02"},
+          "S2026E127": {"key": "FP3", "title": "Abu Dhabi (Practice 3)", "episode": "03"},
+          "S2026E128": {"key": "Qualifying", "title": "Abu Dhabi (Qualifying)", "episode": "06"},
+          "S2026E129": {"key": "Race", "title": "Abu Dhabi (Race)", "episode": "07"}
+        }
+      }
+    },
+    "episode_lookup": {
+      "S2026E10": {"season": "01", "location": "Australia", "key": "FP1", "title": "Australia (Practice 1)", "episode": "01"},
+      "S2026E11": {"season": "01", "location": "Australia", "key": "FP2", "title": "Australia (Practice 2)", "episode": "02"},
+      "S2026E12": {"season": "01", "location": "Australia", "key": "FP3", "title": "Australia (Practice 3)", "episode": "03"},
+      "S2026E13": {"season": "01", "location": "Australia", "key": "Qualifying", "title": "Australia (Qualifying)", "episode": "06"},
+      "S2026E14": {"season": "01", "location": "Australia", "key": "Race", "title": "Australia (Race)", "episode": "07"},
+      "S2026E15": {"season": "02", "location": "China", "key": "FP1", "title": "China (Practice)", "episode": "01"},
+      "S2026E16": {"season": "02", "location": "China", "key": "Sprint.Qualifying", "title": "China (Sprint Qualifying)", "episode": "04"},
+      "S2026E17": {"season": "02", "location": "China", "key": "Sprint", "title": "China (Sprint Race)", "episode": "05"},
+      "S2026E18": {"season": "02", "location": "China", "key": "Qualifying", "title": "China (Qualifying)", "episode": "06"},
+      "S2026E19": {"season": "02", "location": "China", "key": "Race", "title": "China (Race)", "episode": "07"},
+      "S2026E20": {"season": "03", "location": "Japan", "key": "FP1", "title": "Japan (Practice 1)", "episode": "01"},
+      "S2026E21": {"season": "03", "location": "Japan", "key": "FP2", "title": "Japan (Practice 2)", "episode": "02"},
+      "S2026E22": {"season": "03", "location": "Japan", "key": "FP3", "title": "Japan (Practice 3)", "episode": "03"},
+      "S2026E23": {"season": "03", "location": "Japan", "key": "Qualifying", "title": "Japan (Qualifying)", "episode": "06"},
+      "S2026E24": {"season": "03", "location": "Japan", "key": "Race", "title": "Japan (Race)", "episode": "07"},
+      "S2026E25": {"season": "04", "location": "Bahrain", "key": "FP1", "title": "Bahrain (Practice 1)", "episode": "01"},
+      "S2026E26": {"season": "04", "location": "Bahrain", "key": "FP2", "title": "Bahrain (Practice 2)", "episode": "02"},
+      "S2026E27": {"season": "04", "location": "Bahrain", "key": "FP3", "title": "Bahrain (Practice 3)", "episode": "03"},
+      "S2026E28": {"season": "04", "location": "Bahrain", "key": "Qualifying", "title": "Bahrain (Qualifying)", "episode": "06"},
+      "S2026E29": {"season": "04", "location": "Bahrain", "key": "Race", "title": "Bahrain (Race)", "episode": "07"},
+      "S2026E30": {"season": "05", "location": "Saudi Arabia", "key": "FP1", "title": "Saudi Arabia (Practice 1)", "episode": "01"},
+      "S2026E31": {"season": "05", "location": "Saudi Arabia", "key": "FP2", "title": "Saudi Arabia (Practice 2)", "episode": "02"},
+      "S2026E32": {"season": "05", "location": "Saudi Arabia", "key": "FP3", "title": "Saudi Arabia (Practice 3)", "episode": "03"},
+      "S2026E33": {"season": "05", "location": "Saudi Arabia", "key": "Qualifying", "title": "Saudi Arabia (Qualifying)", "episode": "06"},
+      "S2026E34": {"season": "05", "location": "Saudi Arabia", "key": "Race", "title": "Saudi Arabia (Race)", "episode": "07"},
+      "S2026E35": {"season": "06", "location": "Miami", "key": "FP1", "title": "Miami (Practice)", "episode": "01"},
+      "S2026E36": {"season": "06", "location": "Miami", "key": "Sprint.Qualifying", "title": "Miami (Sprint Qualifying)", "episode": "04"},
+      "S2026E37": {"season": "06", "location": "Miami", "key": "Sprint", "title": "Miami (Sprint Race)", "episode": "05"},
+      "S2026E38": {"season": "06", "location": "Miami", "key": "Qualifying", "title": "Miami (Qualifying)", "episode": "06"},
+      "S2026E39": {"season": "06", "location": "Miami", "key": "Race", "title": "Miami (Race)", "episode": "07"},
+      "S2026E40": {"season": "07", "location": "Canada", "key": "FP1", "title": "Canada (Practice)", "episode": "01"},
+      "S2026E41": {"season": "07", "location": "Canada", "key": "Sprint.Qualifying", "title": "Canada (Sprint Qualifying)", "episode": "04"},
+      "S2026E42": {"season": "07", "location": "Canada", "key": "Sprint", "title": "Canada (Sprint Race)", "episode": "05"},
+      "S2026E43": {"season": "07", "location": "Canada", "key": "Qualifying", "title": "Canada (Qualifying)", "episode": "06"},
+      "S2026E44": {"season": "07", "location": "Canada", "key": "Race", "title": "Canada (Race)", "episode": "07"},
+      "S2026E45": {"season": "08", "location": "Monaco", "key": "FP1", "title": "Monaco (Practice 1)", "episode": "01"},
+      "S2026E46": {"season": "08", "location": "Monaco", "key": "FP2", "title": "Monaco (Practice 2)", "episode": "02"},
+      "S2026E47": {"season": "08", "location": "Monaco", "key": "FP3", "title": "Monaco (Practice 3)", "episode": "03"},
+      "S2026E48": {"season": "08", "location": "Monaco", "key": "Qualifying", "title": "Monaco (Qualifying)", "episode": "06"},
+      "S2026E49": {"season": "08", "location": "Monaco", "key": "Race", "title": "Monaco (Race)", "episode": "07"},
+      "S2026E50": {"season": "09", "location": "Barcelona Catalunya", "key": "FP1", "title": "Barcelona-Catalunya (Practice 1)", "episode": "01"},
+      "S2026E51": {"season": "09", "location": "Barcelona Catalunya", "key": "FP2", "title": "Barcelona-Catalunya (Practice 2)", "episode": "02"},
+      "S2026E52": {"season": "09", "location": "Barcelona Catalunya", "key": "FP3", "title": "Barcelona-Catalunya (Practice 3)", "episode": "03"},
+      "S2026E53": {"season": "09", "location": "Barcelona Catalunya", "key": "Qualifying", "title": "Barcelona-Catalunya (Qualifying)", "episode": "06"},
+      "S2026E54": {"season": "09", "location": "Barcelona Catalunya", "key": "Race", "title": "Barcelona-Catalunya (Race)", "episode": "07"},
+      "S2026E55": {"season": "10", "location": "Austria", "key": "FP1", "title": "Austria (Practice 1)", "episode": "01"},
+      "S2026E56": {"season": "10", "location": "Austria", "key": "FP2", "title": "Austria (Practice 2)", "episode": "02"},
+      "S2026E57": {"season": "10", "location": "Austria", "key": "FP3", "title": "Austria (Practice 3)", "episode": "03"},
+      "S2026E58": {"season": "10", "location": "Austria", "key": "Qualifying", "title": "Austria (Qualifying)", "episode": "06"},
+      "S2026E59": {"season": "10", "location": "Austria", "key": "Race", "title": "Austria (Race)", "episode": "07"},
+      "S2026E60": {"season": "11", "location": "Great Britain", "key": "FP1", "title": "Great Britain (Practice)", "episode": "01"},
+      "S2026E61": {"season": "11", "location": "Great Britain", "key": "Sprint.Qualifying", "title": "Great Britain (Sprint Qualifying)", "episode": "04"},
+      "S2026E62": {"season": "11", "location": "Great Britain", "key": "Sprint", "title": "Great Britain (Sprint Race)", "episode": "05"},
+      "S2026E63": {"season": "11", "location": "Great Britain", "key": "Qualifying", "title": "Great Britain (Qualifying)", "episode": "06"},
+      "S2026E64": {"season": "11", "location": "Great Britain", "key": "Race", "title": "Great Britain (Race)", "episode": "07"},
+      "S2026E65": {"season": "12", "location": "Belgium", "key": "FP1", "title": "Belgium (Practice 1)", "episode": "01"},
+      "S2026E66": {"season": "12", "location": "Belgium", "key": "FP2", "title": "Belgium (Practice 2)", "episode": "02"},
+      "S2026E67": {"season": "12", "location": "Belgium", "key": "FP3", "title": "Belgium (Practice 3)", "episode": "03"},
+      "S2026E68": {"season": "12", "location": "Belgium", "key": "Qualifying", "title": "Belgium (Qualifying)", "episode": "06"},
+      "S2026E69": {"season": "12", "location": "Belgium", "key": "Race", "title": "Belgium (Race)", "episode": "07"},
+      "S2026E70": {"season": "13", "location": "Hungary", "key": "FP1", "title": "Hungary (Practice 1)", "episode": "01"},
+      "S2026E71": {"season": "13", "location": "Hungary", "key": "FP2", "title": "Hungary (Practice 2)", "episode": "02"},
+      "S2026E72": {"season": "13", "location": "Hungary", "key": "FP3", "title": "Hungary (Practice 3)", "episode": "03"},
+      "S2026E73": {"season": "13", "location": "Hungary", "key": "Qualifying", "title": "Hungary (Qualifying)", "episode": "06"},
+      "S2026E74": {"season": "13", "location": "Hungary", "key": "Race", "title": "Hungary (Race)", "episode": "07"},
+      "S2026E75": {"season": "14", "location": "Netherlands", "key": "FP1", "title": "Netherlands (Practice)", "episode": "01"},
+      "S2026E76": {"season": "14", "location": "Netherlands", "key": "Sprint.Qualifying", "title": "Netherlands (Sprint Qualifying)", "episode": "04"},
+      "S2026E77": {"season": "14", "location": "Netherlands", "key": "Sprint", "title": "Netherlands (Sprint Race)", "episode": "05"},
+      "S2026E78": {"season": "14", "location": "Netherlands", "key": "Qualifying", "title": "Netherlands (Qualifying)", "episode": "06"},
+      "S2026E79": {"season": "14", "location": "Netherlands", "key": "Race", "title": "Netherlands (Race)", "episode": "07"},
+      "S2026E80": {"season": "15", "location": "Italy", "key": "FP1", "title": "Italy (Practice 1)", "episode": "01"},
+      "S2026E81": {"season": "15", "location": "Italy", "key": "FP2", "title": "Italy (Practice 2)", "episode": "02"},
+      "S2026E82": {"season": "15", "location": "Italy", "key": "FP3", "title": "Italy (Practice 3)", "episode": "03"},
+      "S2026E83": {"season": "15", "location": "Italy", "key": "Qualifying", "title": "Italy (Qualifying)", "episode": "06"},
+      "S2026E84": {"season": "15", "location": "Italy", "key": "Race", "title": "Italy (Race)", "episode": "07"},
+      "S2026E85": {"season": "16", "location": "Spain", "key": "FP1", "title": "Spain (Practice 1)", "episode": "01"},
+      "S2026E86": {"season": "16", "location": "Spain", "key": "FP2", "title": "Spain (Practice 2)", "episode": "02"},
+      "S2026E87": {"season": "16", "location": "Spain", "key": "FP3", "title": "Spain (Practice 3)", "episode": "03"},
+      "S2026E88": {"season": "16", "location": "Spain", "key": "Qualifying", "title": "Spain (Qualifying)", "episode": "06"},
+      "S2026E89": {"season": "16", "location": "Spain", "key": "Race", "title": "Spain (Race)", "episode": "07"},
+      "S2026E90": {"season": "17", "location": "Azerbaijan", "key": "FP1", "title": "Azerbaijan (Practice 1)", "episode": "01"},
+      "S2026E91": {"season": "17", "location": "Azerbaijan", "key": "FP2", "title": "Azerbaijan (Practice 2)", "episode": "02"},
+      "S2026E92": {"season": "17", "location": "Azerbaijan", "key": "FP3", "title": "Azerbaijan (Practice 3)", "episode": "03"},
+      "S2026E93": {"season": "17", "location": "Azerbaijan", "key": "Qualifying", "title": "Azerbaijan (Qualifying)", "episode": "06"},
+      "S2026E94": {"season": "17", "location": "Azerbaijan", "key": "Race", "title": "Azerbaijan (Race)", "episode": "07"},
+      "S2026E95": {"season": "18", "location": "Singapore", "key": "FP1", "title": "Singapore (Practice)", "episode": "01"},
+      "S2026E96": {"season": "18", "location": "Singapore", "key": "Sprint.Qualifying", "title": "Singapore (Sprint Qualifying)", "episode": "04"},
+      "S2026E97": {"season": "18", "location": "Singapore", "key": "Sprint", "title": "Singapore (Sprint Race)", "episode": "05"},
+      "S2026E98": {"season": "18", "location": "Singapore", "key": "Qualifying", "title": "Singapore (Qualifying)", "episode": "06"},
+      "S2026E99": {"season": "18", "location": "Singapore", "key": "Race", "title": "Singapore (Race)", "episode": "07"},
+      "S2026E100": {"season": "19", "location": "United States", "key": "FP1", "title": "United States (Practice 1)", "episode": "01"},
+      "S2026E101": {"season": "19", "location": "United States", "key": "FP2", "title": "United States (Practice 2)", "episode": "02"},
+      "S2026E102": {"season": "19", "location": "United States", "key": "FP3", "title": "United States (Practice 3)", "episode": "03"},
+      "S2026E103": {"season": "19", "location": "United States", "key": "Qualifying", "title": "United States (Qualifying)", "episode": "06"},
+      "S2026E104": {"season": "19", "location": "United States", "key": "Race", "title": "United States (Race)", "episode": "07"},
+      "S2026E105": {"season": "20", "location": "Mexico", "key": "FP1", "title": "Mexico (Practice 1)", "episode": "01"},
+      "S2026E106": {"season": "20", "location": "Mexico", "key": "FP2", "title": "Mexico (Practice 2)", "episode": "02"},
+      "S2026E107": {"season": "20", "location": "Mexico", "key": "FP3", "title": "Mexico (Practice 3)", "episode": "03"},
+      "S2026E108": {"season": "20", "location": "Mexico", "key": "Qualifying", "title": "Mexico (Qualifying)", "episode": "06"},
+      "S2026E109": {"season": "20", "location": "Mexico", "key": "Race", "title": "Mexico (Race)", "episode": "07"},
+      "S2026E110": {"season": "21", "location": "Brazil", "key": "FP1", "title": "Brazil (Practice 1)", "episode": "01"},
+      "S2026E111": {"season": "21", "location": "Brazil", "key": "FP2", "title": "Brazil (Practice 2)", "episode": "02"},
+      "S2026E112": {"season": "21", "location": "Brazil", "key": "FP3", "title": "Brazil (Practice 3)", "episode": "03"},
+      "S2026E113": {"season": "21", "location": "Brazil", "key": "Qualifying", "title": "Brazil (Qualifying)", "episode": "06"},
+      "S2026E114": {"season": "21", "location": "Brazil", "key": "Race", "title": "Brazil (Race)", "episode": "07"},
+      "S2026E115": {"season": "22", "location": "Las Vegas", "key": "FP1", "title": "Las Vegas (Practice 1)", "episode": "01"},
+      "S2026E116": {"season": "22", "location": "Las Vegas", "key": "FP2", "title": "Las Vegas (Practice 2)", "episode": "02"},
+      "S2026E117": {"season": "22", "location": "Las Vegas", "key": "FP3", "title": "Las Vegas (Practice 3)", "episode": "03"},
+      "S2026E118": {"season": "22", "location": "Las Vegas", "key": "Qualifying", "title": "Las Vegas (Qualifying)", "episode": "06"},
+      "S2026E119": {"season": "22", "location": "Las Vegas", "key": "Race", "title": "Las Vegas (Race)", "episode": "07"},
+      "S2026E120": {"season": "23", "location": "Qatar", "key": "FP1", "title": "Qatar (Practice 1)", "episode": "01"},
+      "S2026E121": {"season": "23", "location": "Qatar", "key": "FP2", "title": "Qatar (Practice 2)", "episode": "02"},
+      "S2026E122": {"season": "23", "location": "Qatar", "key": "FP3", "title": "Qatar (Practice 3)", "episode": "03"},
+      "S2026E123": {"season": "23", "location": "Qatar", "key": "Qualifying", "title": "Qatar (Qualifying)", "episode": "06"},
+      "S2026E124": {"season": "23", "location": "Qatar", "key": "Race", "title": "Qatar (Race)", "episode": "07"},
+      "S2026E125": {"season": "24", "location": "Abu Dhabi", "key": "FP1", "title": "Abu Dhabi (Practice 1)", "episode": "01"},
+      "S2026E126": {"season": "24", "location": "Abu Dhabi", "key": "FP2", "title": "Abu Dhabi (Practice 2)", "episode": "02"},
+      "S2026E127": {"season": "24", "location": "Abu Dhabi", "key": "FP3", "title": "Abu Dhabi (Practice 3)", "episode": "03"},
+      "S2026E128": {"season": "24", "location": "Abu Dhabi", "key": "Qualifying", "title": "Abu Dhabi (Qualifying)", "episode": "06"},
+      "S2026E129": {"season": "24", "location": "Abu Dhabi", "key": "Race", "title": "Abu Dhabi (Race)", "episode": "07"}
+    }
+  }
+}
