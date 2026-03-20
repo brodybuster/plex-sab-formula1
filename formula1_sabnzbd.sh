@@ -69,8 +69,8 @@ extract_release_group() {
   fi
 }
 
-# Maps BILLIE Grand Prix location names to the 2026 official round order.
-# Source: https://www.formula1.com/en/racing/2026
+# Maps BILLIE Grand Prix location names to the 2026 published round order.
+# Source: https://www.espn.com/f1/schedule/_/year/2026
 # This cross-reference must be reviewed and updated for each new season.
 lookup_round_by_location() {
   local year="$1"
@@ -84,25 +84,27 @@ lookup_round_by_location() {
     2026:australia) printf '%s' "01" ;;
     2026:china) printf '%s' "02" ;;
     2026:japan) printf '%s' "03" ;;
-    2026:miami) printf '%s' "04" ;;
-    2026:canada) printf '%s' "05" ;;
-    2026:monaco) printf '%s' "06" ;;
-    2026:barcelona\ catalunya) printf '%s' "07" ;;
-    2026:austria) printf '%s' "08" ;;
-    2026:great\ britain) printf '%s' "09" ;;
-    2026:belgium) printf '%s' "10" ;;
-    2026:hungary) printf '%s' "11" ;;
-    2026:netherlands) printf '%s' "12" ;;
-    2026:italy) printf '%s' "13" ;;
-    2026:spain) printf '%s' "14" ;;
-    2026:azerbaijan) printf '%s' "15" ;;
-    2026:singapore) printf '%s' "16" ;;
-    2026:united\ states|2026:usa\ cota|2026:cota) printf '%s' "17" ;;
-    2026:mexico) printf '%s' "18" ;;
-    2026:brazil|2026:sao\ paulo) printf '%s' "19" ;;
-    2026:las\ vegas|2026:usa\ las\ vegas) printf '%s' "20" ;;
-    2026:qatar) printf '%s' "21" ;;
-    2026:abu\ dhabi) printf '%s' "22" ;;
+    2026:bahrain|2026:sakhir) printf '%s' "04" ;;
+    2026:saudi\ arabia|2026:jeddah) printf '%s' "05" ;;
+    2026:miami|2026:usa\ miami) printf '%s' "06" ;;
+    2026:canada|2026:montreal) printf '%s' "07" ;;
+    2026:monaco) printf '%s' "08" ;;
+    2026:barcelona\ catalunya|2026:barcelona|2026:spain\ barcelona) printf '%s' "09" ;;
+    2026:austria|2026:spielberg) printf '%s' "10" ;;
+    2026:great\ britain|2026:silverstone) printf '%s' "11" ;;
+    2026:belgium|2026:spa|2026:spa\ francorchamps) printf '%s' "12" ;;
+    2026:hungary|2026:budapest) printf '%s' "13" ;;
+    2026:netherlands|2026:zandvoort) printf '%s' "14" ;;
+    2026:italy|2026:monza) printf '%s' "15" ;;
+    2026:spain|2026:madrid) printf '%s' "16" ;;
+    2026:azerbaijan|2026:baku) printf '%s' "17" ;;
+    2026:singapore) printf '%s' "18" ;;
+    2026:united\ states|2026:usa\ cota|2026:cota|2026:austin) printf '%s' "19" ;;
+    2026:mexico|2026:mexico\ city) printf '%s' "20" ;;
+    2026:brazil|2026:sao\ paulo|2026:interlagos) printf '%s' "21" ;;
+    2026:las\ vegas|2026:usa\ las\ vegas) printf '%s' "22" ;;
+    2026:qatar|2026:lusail) printf '%s' "23" ;;
+    2026:abu\ dhabi|2026:yas\ marina) printf '%s' "24" ;;
     *) return 1 ;;
   esac
 }
