@@ -129,9 +129,7 @@ Example:
 ```text
 0 : Requires : re: MWR|BILLIE
 1 : Reject : re: proper|notebook|multi|round00|academy|warmup|race\.one|race\.two|sprint\.race\.one|sprint\.race\.two
-2 : Requires : re: 720p|1080p|2160p
-3 : Requires : re: FP1|FP2|FP3|Sprint|Qualifying|Race|Practice\.One|Practice\.Two|Practice\.Three|Grand\.Prix
-4 : *
+2 : *
 ```
 
 The post-processing script remains the final safety layer, but RSS filters are the right place to reduce unwanted downloads before they consume bandwidth.
