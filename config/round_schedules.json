@@ -5,121 +5,143 @@
       "aliases": [
         "Australia"
       ],
-      "sprint": false
+      "canceled": false
     },
     "02": {
       "location": "China",
       "aliases": [
         "China"
       ],
-      "sprint": true
+      "canceled": false
     },
     "03": {
       "location": "Japan",
       "aliases": [
         "Japan"
       ],
-      "sprint": false
+      "canceled": false
     },
     "04": {
-      "location": "Miami",
+      "location": "Bahrain",
       "aliases": [
-        "Miami"
+        "Bahrain",
+        "Sakhir"
       ],
-      "sprint": true
+      "canceled": true
     },
     "05": {
-      "location": "Canada",
+      "location": "Saudi Arabia",
       "aliases": [
-        "Canada"
+        "Saudi Arabia",
+        "Jeddah"
       ],
-      "sprint": false
+      "canceled": true
     },
     "06": {
+      "location": "Miami",
+      "aliases": [
+        "Miami",
+        "USA Miami"
+      ],
+      "canceled": false
+    },
+    "07": {
+      "location": "Canada",
+      "aliases": [
+        "Canada",
+        "Montreal"
+      ],
+      "canceled": false
+    },
+    "08": {
       "location": "Monaco",
       "aliases": [
         "Monaco"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "07": {
+    "09": {
       "location": "Barcelona Catalunya",
       "aliases": [
         "Barcelona Catalunya",
+        "Barcelona",
         "Spain Barcelona"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "08": {
+    "10": {
       "location": "Austria",
       "aliases": [
-        "Austria"
+        "Austria",
+        "Spielberg"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "09": {
+    "11": {
       "location": "Great Britain",
       "aliases": [
         "Great Britain",
         "Silverstone"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "10": {
+    "12": {
       "location": "Belgium",
       "aliases": [
         "Belgium",
-        "Spa"
+        "Spa",
+        "Spa Francorchamps"
       ],
-      "sprint": true
+      "canceled": false
     },
-    "11": {
+    "13": {
       "location": "Hungary",
       "aliases": [
-        "Hungary"
+        "Hungary",
+        "Budapest"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "12": {
+    "14": {
       "location": "Netherlands",
       "aliases": [
         "Netherlands",
         "Zandvoort"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "13": {
+    "15": {
       "location": "Italy",
       "aliases": [
         "Italy",
         "Monza"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "14": {
+    "16": {
       "location": "Spain",
       "aliases": [
         "Spain",
         "Madrid"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "15": {
+    "17": {
       "location": "Azerbaijan",
       "aliases": [
         "Azerbaijan",
         "Baku"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "16": {
+    "18": {
       "location": "Singapore",
       "aliases": [
         "Singapore"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "17": {
+    "19": {
       "location": "United States",
       "aliases": [
         "United States",
@@ -127,47 +149,48 @@
         "COTA",
         "Austin"
       ],
-      "sprint": true
+      "canceled": false
     },
-    "18": {
+    "20": {
       "location": "Mexico",
       "aliases": [
         "Mexico",
         "Mexico City"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "19": {
+    "21": {
       "location": "Brazil",
       "aliases": [
         "Brazil",
         "Sao Paulo",
         "Interlagos"
       ],
-      "sprint": true
+      "canceled": false
     },
-    "20": {
+    "22": {
       "location": "Las Vegas",
       "aliases": [
         "Las Vegas",
         "USA Las Vegas"
       ],
-      "sprint": false
+      "canceled": false
     },
-    "21": {
+    "23": {
       "location": "Qatar",
       "aliases": [
         "Qatar",
         "Lusail"
       ],
-      "sprint": true
+      "canceled": false
     },
-    "22": {
+    "24": {
       "location": "Abu Dhabi",
       "aliases": [
-        "Abu Dhabi"
+        "Abu Dhabi",
+        "Yas Marina"
       ],
-      "sprint": false
+      "canceled": false
     }
   }
 }

@@ -212,26 +212,19 @@ def lookup_round_by_location(year: str, location: str) -> Optional[Tuple[str, st
 
 
 def expected_sessions(year: str, season: str) -> list[str]:
-    schedule = ROUND_SCHEDULES.get(year, {}).get(season)
-    if not schedule:
-        return ["FP1", "FP2", "FP3", "Qualifying", "Race"]
-    if schedule["sprint"]:
-        return ["FP1", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"]
-    return ["FP1", "FP2", "FP3", "Qualifying", "Race"]
+    return ["FP1", "FP2", "FP3", "Sprint.Qualifying", "Sprint", "Qualifying", "Race"]
 
 
 def expected_bonus_sessions(year: str, season: str) -> list[str]:
-    always = [
+    return [
+        "Pre-Sprint.Show",
+        "Post-Sprint.Show",
         "Pre-Qualifying.Show",
         "Post-Qualifying.Show",
         "Pre-Race.Show",
         "Post-Race.Show",
         "Post-Race.Press.Conference",
     ]
-    schedule = ROUND_SCHEDULES.get(year, {}).get(season)
-    if schedule and schedule["sprint"]:
-        return ["Pre-Sprint.Show", "Post-Sprint.Show"] + always
-    return always
 
 
 def build_ranking_score(release_group: str, source_tag: str, resolution: Optional[str]) -> int:

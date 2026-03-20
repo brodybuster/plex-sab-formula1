@@ -65,8 +65,13 @@ The script tracks two kinds of sessions.
 
 Core sessions:
 
-- non-sprint weekend: `FP1`, `FP2`, `FP3`, `Qualifying`, `Race`
-- sprint weekend: `FP1`, `Sprint.Qualifying`, `Sprint`, `Qualifying`, `Race`
+- `FP1`
+- `FP2`
+- `FP3`
+- `Sprint.Qualifying`
+- `Sprint`
+- `Qualifying`
+- `Race`
 
 Bonus sessions:
 
@@ -217,7 +222,7 @@ These files must be named using the season number parsed by the script. In this 
 
 - `formula_posters/season/01.png`
 - `formula_posters/season/02.png`
-- `formula_posters/season/22.png`
+- `formula_posters/season/24.png`
 
 **How the script uses them**
 
@@ -258,11 +263,17 @@ Plex documentation for local media assets:
 
 ## Updating For A New Season
 
-The round and sprint mapping lives in:
+The round and location mapping lives in:
 
 - `config/round_schedules.json`
 
-You can update it manually, or generate a season entry from a simple text file with:
+By default, `build_round_schedule.py` can scrape the calendar URL from `config/formula1_config.toml` and rebuild the round mapping automatically:
+
+```sh
+python3 build_round_schedule.py --year 2026
+```
+
+You can also build or override a season entry from a simple text file with:
 
 ```sh
 python3 build_round_schedule.py --year 2027 --input season_2027.txt
@@ -271,8 +282,9 @@ python3 build_round_schedule.py --year 2027 --input season_2027.txt
 Example input format:
 
 ```text
-01 | Australia | race   | Australia, Melbourne
-02 | China     | sprint | China, Shanghai
+01 | Australia | Australia, Melbourne
+02 | China     | China, Shanghai
+04 | Bahrain   | Bahrain, Sakhir | canceled
 ```
 
 See `season_schedule_template.txt` for the expected format.

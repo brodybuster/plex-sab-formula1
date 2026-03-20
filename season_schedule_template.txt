@@ -1,9 +1,9 @@
 # Format:
-# round | location | sprint_flag | alias1, alias2, alias3
-# sprint_flag values:
-#   sprint / true / yes / 1
-#   race / false / no / 0
+# round | location | alias1, alias2, alias3 | canceled
+# canceled values are optional:
+#   canceled / cancelled / true / yes / 1
 #
 # Example:
-# 01 | Australia | race   | Australia, Melbourne
-# 02 | China     | sprint | China, Shanghai
+# 01 | Australia | Australia, Melbourne
+# 02 | China     | China, Shanghai
+# 04 | Bahrain   | Bahrain, Sakhir | canceled

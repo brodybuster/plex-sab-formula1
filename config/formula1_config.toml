@@ -7,6 +7,7 @@ include_extras = false
 schedule_file = "round_schedules.json"
 delete_rejected_files = true
 default_resolution = "1080p"
+calendar_url = "https://www.espn.com/f1/schedule/_/year/2026"
 
 [release_family_rank]
 MWR = 200
