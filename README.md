@@ -4,18 +4,16 @@ This repo provides a SABnzbd post-processing script for importing Formula 1 rele
 
 The current Python script supports:
 
-- `MWR` releases as the preferred release family
-- `BILLIE` releases as a fallback release family
+- `playWEB` releases that use TVDB-style `S2026E##` numbering
 - multi-file jobs, so one SAB download can import multiple sessions
-- weekend completeness tracking with separate `core` and `bonus` session lists
-- safe replacement rules based on release family, source tag, and resolution rank
+- a generated lookup table that maps TVDB episode codes into `Season XX` race folders
+- safe replacement rules based on preferred resolution, with `1080p` as the default preference
 
 ## Supported Release Logic
 
 The script currently understands:
 
-- `MWR` Formula 1 releases with round-based naming
-- `BILLIE` Formula 1 releases for the supported 2026 patterns
+- `playWEB` Formula 1 releases with TVDB-style naming such as `Formula1.S2026E19.China.Race.1080p...-playWEB`
 
 Unsupported or unwanted items are rejected by the script during post-processing. That means the script can protect your library even if a broad RSS rule lets something through.
 
@@ -61,9 +59,7 @@ If you use Docker, all of these paths must exist inside the SAB container, not j
 
 ## What The Script Imports
 
-The script tracks two kinds of sessions.
-
-Core sessions:
+The script tracks core race-weekend sessions:
 
 - `FP1`
 - `FP2`
@@ -73,33 +69,16 @@ Core sessions:
 - `Qualifying`
 - `Race`
 
-Bonus sessions:
-
-- `Pre-Sprint.Show`
-- `Post-Sprint.Show`
-- `Pre-Qualifying.Show`
-- `Post-Qualifying.Show`
-- `Pre-Race.Show`
-- `Post-Race.Show`
-- `Post-Race.Press.Conference`
-
-By default, only core sessions are imported. Bonus sessions are parsed and tracked separately, and can be enabled with:
-
-```toml
-include_extras = true
-```
+This release-group workflow does not currently target pre-show or post-show extras.
 
 ## Replacement Rules
 
-The script scores competing releases using values from `config/formula1_config.toml`.
+The script prefers the configured `preferred_resolution`, which defaults to `1080p`.
 
 Current default behavior:
 
-- `MWR` outranks `BILLIE`
-- `F1LIVE` outranks `F1TV`
-- `F1TV` outranks `SKY`
-- `1080p` outranks `2160p`
-- `2160p` outranks `720p`
+- a `1080p` release is preferred over `720p` or `2160p`
+- if two releases have the same preferred-status, the larger file wins
 
 Only these explicit resolutions are accepted:
 
@@ -132,8 +111,8 @@ Use SAB RSS filters as a coarse front-end filter, especially if you want to save
 Example:
 
 ```text
-0 : Requires : re: MWR|BILLIE
-1 : Reject : re: proper|notebook|multi|round00|academy|warmup|race\.one|race\.two|sprint\.race\.one|sprint\.race\.two
+0 : Requires : re: playWEB
+1 : Reject : re: part\.1|part\.2
 2 : *
 ```
 
@@ -192,11 +171,9 @@ The script also writes import state outside the Plex-visible folders:
 Each round state file tracks:
 
 - expected core sessions
-- expected bonus sessions
 - present sessions
 - missing core sessions
-- missing bonus sessions
-- file ranking metadata
+- file metadata
 
 ## Posters
 

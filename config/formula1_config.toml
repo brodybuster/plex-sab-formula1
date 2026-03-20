@@ -1,25 +1,9 @@
-preferred_feed = "F1LIVE"
 dest_dir = "/media/pool.media/formula1"
 poster_episode_dir = "/config/scripts/formula_posters/episode"
 poster_season_dir = "/config/scripts/formula_posters/season"
 state_dirname = ".metadata"
-include_extras = false
 schedule_file = "round_schedules.json"
 delete_rejected_files = true
-default_resolution = "1080p"
-calendar_url = "https://www.espn.com/f1/schedule/_/year/2026"
-
-[release_family_rank]
-MWR = 200
-BILLIE = 100
-
-[source_tag_rank]
-F1LIVE = 30
-F1TV = 20
-SKY = 10
-BILLIE = 0
-
-[resolution_rank]
-"1080p" = 40
-"2160p" = 30
-"720p" = 20
+preferred_resolution = "1080p"
+calendar_url = "https://www.thetvdb.com/series/formula-1/seasons/official/2026"
+release_group = "playWEB"
