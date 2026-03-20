@@ -12,8 +12,6 @@
 - The script is designed to prefer `F1LIVE` coverage over `SKY`, while still allowing `SKY` releases to be downloaded until a preferred release becomes available.
 - Copy and paste the custom RSS feed URL from your indexer into a new RSS feed in SABnzbd.
 
-<img width="500" alt="Screenshot 2025-04-07 at 2 19 55 PM" src="https://github.com/user-attachments/assets/04891138-0bb7-435c-bfe4-d90e63e393a9" />
-
 Add the following filters and choose the `formula1_sabnzbd.sh` script for post-processing for your new RSS Feed:
 
 Recommended SABnzbd RSS Filters:
@@ -26,12 +24,8 @@ Recommended SABnzbd RSS Filters:
 4 : *
 ```
 
-<img width="500" alt="Screenshot 2025-04-07 at 1 47 08 PM" src="https://github.com/user-attachments/assets/2f3e2028-3727-40a1-a7cd-dddeacbd2b9b" />
-
 * Press **Read Feed**, then **Apply Filters**
 * Note: On the first loading of the feed you will need to Force Download any files that qualify. Subsequent RSS Feeds will be automatically refreshed every hour. 
-
-<img width="500" alt="Screenshot 2025-04-07 at 2 37 50 PM" src="https://github.com/user-attachments/assets/2fa57522-f7d2-4eca-a40d-00ea9322242c" />
 
 ## 3. Set your agent for Plex Media Shows to use local assets
 <img width="500" alt="Screenshot 2025-04-07 at 1 51 02 PM" src="https://github.com/user-attachments/assets/07fc730e-6d56-4e23-9a98-4df9623a2019" />
